@@ -116,10 +116,81 @@ class StoreViewController: ViewController {
     
     private lazy var priceLabel: UILabel = {
         let priceLabel = UILabel()
-        priceLabel.font = .systemFont14Medium
+        priceLabel.text = "4329 ₽"
+        priceLabel.font = .systemFont20Bold
         return priceLabel
     }()
     
+    private lazy var oldPriceLabel: UILabel = {
+        let priceLabel = UILabel()
+        priceLabel.text = "6499 ₽"
+        priceLabel.textColor = .gray
+        priceLabel.font = .systemFont16Medium
+        return priceLabel
+    }()
+    private lazy var colorLabel: UILabel = {
+        let priceLabel = UILabel()
+        priceLabel.text = "Цвет:"
+        priceLabel.textColor = .gray
+        priceLabel.font = .systemFont16Medium
+        return priceLabel
+    }()
+    
+    private lazy var colorDescriptionLabel: UILabel = {
+        let priceLabel = UILabel()
+        priceLabel.text = "Зеленый, изумрудно зеленый"
+        priceLabel.textColor = .gray
+        priceLabel.font = .systemFont16Medium
+        return priceLabel
+    }()
+    private lazy var imageOfItem: UIImageView = {
+        let imageOfItem = UIImageView()
+        imageOfItem.layer.cornerRadius = 3
+        imageOfItem.backgroundColor = .cyan
+        return imageOfItem
+    }()
+    private lazy var verticalView: UIView = {
+        let verticalView = UIView()
+        verticalView.backgroundColor = .gray
+        return verticalView
+    }()
+    private lazy var separatorlView: UIView = {
+        let verticalView = UIView()
+        verticalView.backgroundColor = .gray
+        return verticalView
+    }()
+    private lazy var brandLabel: UILabel = {
+        let priceLabel = UILabel()
+        priceLabel.text = "Bosh"
+        priceLabel.font = .systemFont20Bold
+        return priceLabel
+    }()
+    
+    private lazy var rightChevron: UIImageView = {
+        let rightChevron = UIImageView()
+        rightChevron.image = UIImage(named: "chevronRight")
+        return rightChevron
+    }()
+    private lazy var star: UIImageView = {
+        let star = UIImageView()
+        star.image = UIImage(named: "star")
+        return star
+    }()
+//    UIImage(named: "star")
+    private lazy var descriptionLabel: UILabel = {
+        let priceLabel = UILabel()
+        priceLabel.text = "Фен для волос с насадками с диффузаром"
+        priceLabel.textColor = .gray
+        priceLabel.font = .systemFont16Medium
+        return priceLabel
+    }()
+    private lazy var rateLabel: UILabel = {
+        let priceLabel = UILabel()
+        priceLabel.text = "3.9"
+        priceLabel.textColor = .black
+        priceLabel.font = .systemFont16Medium
+        return priceLabel
+    }()
     init(viewModel: StoreViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -183,7 +254,17 @@ class StoreViewController: ViewController {
         
         sliderContentView.addSubview(pageControl)
         sliderContentView.addSubview(pageControlLabel)
-        restInfoContentView
+        restInfoContentView.addSubview(priceLabel)
+        restInfoContentView.addSubview(oldPriceLabel)
+        restInfoContentView.addSubview(verticalView)
+        restInfoContentView.addSubview(colorLabel)
+        restInfoContentView.addSubview(colorDescriptionLabel)
+        restInfoContentView.addSubview(imageOfItem)
+        restInfoContentView.addSubview(separatorlView)
+        restInfoContentView.addSubview(brandLabel)
+        restInfoContentView.addSubview(rightChevron)
+        restInfoContentView.addSubview(descriptionLabel)
+        
         
         pageControl.snp.makeConstraints {
             $0.centerX.equalTo(self.imageScrollView.snp.centerX)
@@ -201,6 +282,106 @@ class StoreViewController: ViewController {
 //            $0.right.equalTo(self.imageScrollView.snp.right)
             $0.height.equalTo(30)
             $0.width.equalTo(60)
+        }
+        
+        priceLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(20)
+            $0.left.equalToSuperview().offset(20)
+            $0.height.equalTo(30)
+//            $0.width.equalTo(70)
+        }
+        
+        oldPriceLabel.snp.makeConstraints {
+            $0.bottom.equalTo(self.priceLabel.snp.bottom)
+            $0.left.equalTo(self.priceLabel.snp.right).offset(20)
+            $0.height.equalTo(30)
+//            $0.width.equalTo(70)
+        }
+        
+        verticalView.snp.makeConstraints {
+            $0.centerY.equalTo(self.oldPriceLabel.snp.centerY)
+            $0.left.equalTo(self.oldPriceLabel.snp.left)
+            $0.right.equalTo(self.oldPriceLabel.snp.right)
+            $0.height.equalTo(1)
+//            $0.width.equalTo(70)
+        }
+        
+        colorLabel.snp.makeConstraints {
+            $0.top.equalTo(self.priceLabel.snp.bottom).offset(5)
+            $0.left.equalToSuperview().offset(20)
+            $0.height.equalTo(30)
+//            $0.width.equalTo(70)
+        }
+        colorDescriptionLabel.snp.makeConstraints {
+            $0.centerY.equalTo(self.colorLabel.snp.centerY)
+//            $0.top.equalTo(self.priceLabel.snp.bottom).offset(20)
+            $0.left.equalTo(self.colorLabel.snp.right).offset(20)
+            $0.height.equalTo(30)
+//            $0.width.equalTo(70)
+        }
+        
+        imageOfItem.snp.makeConstraints {
+//            $0.centerY.equalTo(self.colorLabel.snp.centerY)
+            $0.top.equalTo(self.colorLabel.snp.bottom).offset(20)
+            $0.left.equalToSuperview().offset(20)
+            $0.height.equalTo(70)
+            $0.width.equalTo(50)
+        }
+        separatorlView.snp.makeConstraints {
+            $0.centerX.equalTo(self.view.snp.centerX)
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(20)
+            $0.height.equalTo(1)
+            $0.top.equalTo(self.imageOfItem.snp.bottom).offset(20)
+        }
+        
+        brandLabel.snp.makeConstraints {
+            $0.top.equalTo(self.separatorlView.snp.bottom).offset(20)
+            $0.left.equalToSuperview().offset(20)
+            $0.height.equalTo(30)
+//            $0.width.equalTo(70)
+        }
+        
+//        brandLabel.snp.makeConstraints {
+//            $0.top.equalTo(self.separatorlView.snp.bottom).offset(20)
+//            $0.left.equalToSuperview().offset(20)
+//            $0.height.equalTo(30)
+////            $0.width.equalTo(70)
+//        }
+        UIImage(named: "star")
+        
+        descriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(self.brandLabel.snp.bottom)
+//            $0.top.equalTo(self.priceLabel.snp.bottom).offset(20)
+            $0.left.equalToSuperview().offset(20)
+            $0.height.equalTo(30)
+//            $0.width.equalTo(70)
+        }
+//        star
+        rightChevron.snp.makeConstraints {
+//            $0.top.equalTo(self.separatorlView.snp.bottom).offset(20)
+            $0.left.equalTo((self.brandLabel.snp.right)).offset(20)
+            $0.height.equalTo(15)
+            $0.width.equalTo(7)
+            $0.centerY.equalTo(self.brandLabel.snp.centerY)
+//            $0.width.equalTo(70)
+        }
+        star.snp.makeConstraints {
+            $0.top.equalTo(self.descriptionLabel.snp.bottom).offset(20)
+            $0.left.equalToSuperview().offset(20)
+            $0.height.equalTo(14)
+            $0.width.equalTo(14)
+//            $0.centerY.equalTo(self.brandLabel.snp.centerY)
+//            $0.width.equalTo(70)
+        }
+//        rateLabel
+        rateLabel.snp.makeConstraints {
+            $0.top.equalTo(self.star.snp.top)
+            $0.left.equalTo(self.star.snp.right).offset(1)
+            $0.height.equalTo(14)
+            $0.width.equalTo(14)
+//            $0.centerY.equalTo(self.brandLabel.snp.centerY)
+//            $0.width.equalTo(70)
         }
     }
 }
