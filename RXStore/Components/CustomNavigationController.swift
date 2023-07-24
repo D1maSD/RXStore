@@ -14,9 +14,9 @@ enum NavigationType {
     var barColor: UIColor {
         switch self {
         case .white:
-            return .white
+            return .red
         case .clear:
-            return .clear
+            return .orange
         }
     }
 
@@ -35,6 +35,7 @@ class CustomNavigationController: UINavigationController {
     private var navigationType: NavigationType = .white
     internal var customNavigationIsHiden: Bool = false {
         didSet {
+            print("21 .\(customNavigationIsHiden)")
             customNavigationNeeded(customNavigationIsHiden)
         }
     }

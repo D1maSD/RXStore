@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     var backTap: (() -> Void)?
     var navigationBar: CustomNavigationBarView?
-    
+//    internal lazy var headerView = MainHeaderView(type: type, delegate: self)
     var rightButttonTap: (() -> Void)?
     var navBarTitle: ((String) -> Void)?
     var navigationType: NavigationType?
@@ -22,6 +22,15 @@ class ViewController: UIViewController {
         setupLayout()
         setup()
         setupUI()
+        setupHeader()
+    }
+    
+    private func setupHeader() {
+//        contentView.addSubview(headerView)
+//        headerView.snp.makeConstraints { make in
+//            make.top.equalToSuperview()
+//            make.leading.trailing.equalToSuperview()
+//        }
     }
     
     func setup() {}

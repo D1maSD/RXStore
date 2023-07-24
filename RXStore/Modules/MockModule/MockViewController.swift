@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MockViewController.swift
 //  RXStore
 //
 //  Created by Мельник Дмитрий on 18.07.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StoreViewController: ViewController {
+class MockViewController: ViewController {
     
     private let scrollViewContainer: UIStackView = {
         let view = UIStackView()
@@ -62,7 +62,7 @@ class StoreViewController: ViewController {
         return view
     }()
     
-    private var viewModel: StoreViewModelProtocol
+    private var viewModel: MockViewModelProtocol
     private lazy var cardActionView = CardActionView(delegate: viewModel)
     private lazy var views = [view0, view1, view2]
     private lazy var imageScrollView: UIScrollView = {
@@ -80,9 +80,7 @@ class StoreViewController: ViewController {
             
             views[i].frame = CGRect(x: sliderContentView.frame.width * CGFloat(i), y: 0, width: sliderContentView.frame.width, height: 500)
         }
-        
         scrollView.delegate = self
-        
         return scrollView
     }()
     
@@ -236,7 +234,7 @@ class StoreViewController: ViewController {
         verticalView.backgroundColor = .gray
         return verticalView
     }()
-    init(viewModel: StoreViewModelProtocol) {
+    init(viewModel: MockViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -290,6 +288,7 @@ class StoreViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        setupTableView()
         setupConstraints()
         setupCardActionView()
         
@@ -299,6 +298,8 @@ class StoreViewController: ViewController {
         
         sliderContentView.addSubview(pageControl)
         sliderContentView.addSubview(pageControlLabel)
+        
+        
         restInfoContentView.addSubview(priceLabel)
         restInfoContentView.addSubview(oldPriceLabel)
         restInfoContentView.addSubview(verticalView)
@@ -427,7 +428,7 @@ class StoreViewController: ViewController {
 //            $0.centerY.equalTo(self.brandLabel.snp.centerY)
 //            $0.width.equalTo(70)
         }
-//        
+//
         ratesLabel.snp.makeConstraints {
             $0.top.equalTo(self.rateLabel.snp.top)
             $0.left.equalTo(self.rateLabel.snp.right).offset(20)
@@ -462,26 +463,13 @@ class StoreViewController: ViewController {
             $0.height.equalTo(1)
             $0.top.equalTo(self.numberOfSalesLabel.snp.bottom).offset(20)
         }
-        aboutProduct.snp.makeConstraints {
-            $0.top.equalTo(self.separatorlViewTwo.snp.bottom).offset(20)
-//            $0.top.equalTo(self.priceLabel.snp.bottom).offset(20)
-            $0.left.equalToSuperview().offset(20)
-            $0.height.equalTo(30)
-//            $0.width.equalTo(70)
-        }
-        descriptionProductLabel.snp.makeConstraints {
-            $0.top.equalTo(self.aboutProduct.snp.bottom).offset(20)
-//            $0.top.equalTo(self.priceLabel.snp.bottom).offset(20)
-            $0.left.equalToSuperview().offset(20)
-            $0.right.equalToSuperview().offset(-20)
-//            $0.height.equalTo(30)
-//            $0.width.equalTo(70)
-        }
+        
+        
     }
 }
 
 
-extension StoreViewController {
+extension MockViewController {
     func setupConstraints() {
         view.addSubview(scrollView)
         scrollView.addSubview(scrollViewContainer)
@@ -501,9 +489,19 @@ extension StoreViewController {
         scrollViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         self.view.backgroundColor = .white
     }
+    
+    private func setupTableView() {
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+//            make.top.equalToSuperview().offset(headerView.frame.height)
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-56)
+        }
+    }
 }
 
-extension StoreViewController: UIScrollViewDelegate {
+extension MockViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x / view.frame.width)
         pageControl.currentPage = Int(pageIndex)

@@ -1,22 +1,21 @@
 //
-//  StoreCoordinator.swift
+//  MockCoordinator.swift
 //  RXStore
 //
-//  Created by Мельник Дмитрий on 20.07.2023.
+//  Created by Мельник Дмитрий on 23.07.2023.
 //
 
 import UIKit
 
-
-final class StoreCoordinator: Coordinator {
+final class MockCoordinator: Coordinator {
     
-    private weak var storeViewController: StoreViewController?
+    private weak var mockViewController: MockViewController?
     private weak var navigationController: CustomNavigationController?
     
     func start() -> UIViewController? {
-        let viewModel = StoreViewModel()
-        let viewController = StoreViewController(viewModel: viewModel)
-        storeViewController = viewController
+        let viewModel = MockViewModel()
+        let viewController = MockViewController(viewModel: viewModel)
+        mockViewController = viewController
         let navController = CustomNavigationController(viewController)
         navController.customNavigationIsHiden = false
         navigationController = navController

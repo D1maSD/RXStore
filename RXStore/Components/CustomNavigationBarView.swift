@@ -59,14 +59,6 @@ class CustomNavigationBarView: UIView {
         backButton.setImage(type.backButtonImage, for: .normal)
         backButton.addTarget(self, action: #selector(tapBackButton), for: .touchUpInside)
         rightButton.isHidden = true
-//        switch type {
-//        case .peopleGoFilter:
-//            rightButton.isHidden = false
-//            rightButton.setTitle(L10n.Filter.reset, for: .normal)
-//            rightButton.titleLabel?.font = .systemFont14Medium
-//        default:
-//            rightButton.isHidden = true
-//        }
     }
 
     func setupRightButton() {
