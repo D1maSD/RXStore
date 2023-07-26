@@ -8,13 +8,13 @@
 import UIKit
 
 
-final class PriceOfItemCell: UITableViewCell {
+final class AboutItemCell: UITableViewCell {
     
-    private let restInfoContentView: UIView = {
-        let view = UIView()
-        view.heightAnchor.constraint(equalToConstant: 300).isActive = true
-        return view
-    }()
+//    private let restInfoContentView: UIView = {
+//        let view = UIView()
+//        view.heightAnchor.constraint(equalToConstant: 300).isActive = true
+//        return view
+//    }()
     private lazy var aboutProduct: UILabel = {
         let priceLabel = UILabel()
         priceLabel.text = "О товаре"
@@ -35,15 +35,12 @@ final class PriceOfItemCell: UITableViewCell {
     }
 
     private func setup() {
-        contentView.addSubview(restInfoContentView)
-        
-//        restInfoContentView.addSubview(priceLabel)
-        
-        restInfoContentView.addSubview(aboutProduct)
-        restInfoContentView.addSubview(descriptionProductLabel)
+                
+        contentView.addSubview(aboutProduct)
+        contentView.addSubview(descriptionProductLabel)
         
         aboutProduct.snp.makeConstraints {
-            $0.top.equalTo(self.restInfoContentView.snp.top).offset(20)
+            $0.top.equalTo(self.contentView.snp.top).offset(20)
             $0.left.equalToSuperview().offset(20)
             $0.height.equalTo(30)
         }

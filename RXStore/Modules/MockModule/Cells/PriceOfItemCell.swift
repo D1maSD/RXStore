@@ -66,22 +66,22 @@ final class PriceOfItemCell: UITableViewCell {
     }
 
     private func setup() {
-        contentView.addSubview(restInfoContentView)
+//        contentView.addSubview(restInfoContentView)
         
 //        restInfoContentView.addSubview(priceLabel)
         
-        restInfoContentView.addSubview(priceLabel)
-        restInfoContentView.addSubview(oldPriceLabel)
-        restInfoContentView.addSubview(verticalView)
-        restInfoContentView.addSubview(colorLabel)
-        restInfoContentView.addSubview(colorDescriptionLabel)
-        restInfoContentView.addSubview(imageOfItem)
-        restInfoContentView.addSubview(separatorlView)
+        contentView.addSubview(priceLabel)
+        contentView.addSubview(oldPriceLabel)
+        contentView.addSubview(verticalView)
+        contentView.addSubview(colorLabel)
+        contentView.addSubview(colorDescriptionLabel)
+        contentView.addSubview(imageOfItem)
+        contentView.addSubview(separatorlView)
 
         
         priceLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(20)
-            $0.left.equalToSuperview().offset(20)
+            $0.top.equalTo(self.contentView.snp.top).offset(20)
+            $0.left.equalTo(self.contentView.snp.left).offset(20)
             $0.height.equalTo(30)
         }
         
@@ -100,7 +100,7 @@ final class PriceOfItemCell: UITableViewCell {
         
         colorLabel.snp.makeConstraints {
             $0.top.equalTo(self.priceLabel.snp.bottom).offset(5)
-            $0.left.equalToSuperview().offset(20)
+            $0.left.equalTo(self.contentView.snp.left).offset(20)
             $0.height.equalTo(30)
         }
         colorDescriptionLabel.snp.makeConstraints {
@@ -111,16 +111,17 @@ final class PriceOfItemCell: UITableViewCell {
         
         imageOfItem.snp.makeConstraints {
             $0.top.equalTo(self.colorLabel.snp.bottom).offset(20)
-            $0.left.equalToSuperview().offset(20)
+            $0.left.equalTo(self.contentView.snp.left).offset(20)
             $0.height.equalTo(70)
             $0.width.equalTo(50)
         }
         separatorlView.snp.makeConstraints {
-            $0.centerX.equalTo(self.restInfoContentView.snp.centerX)
-            $0.left.equalToSuperview().offset(20)
-            $0.right.equalToSuperview().offset(20)
+            $0.centerX.equalTo(self.contentView.snp.centerX)
+            $0.left.equalTo(self.contentView.snp.left).offset(20)
+            $0.right.equalTo(self.contentView.snp.right).offset(20)
             $0.height.equalTo(1)
             $0.top.equalTo(self.imageOfItem.snp.bottom).offset(20)
+            $0.bottom.equalTo(self.contentView.snp.bottom)
         }
     }
     

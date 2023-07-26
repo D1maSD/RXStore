@@ -26,6 +26,7 @@ final class CardActionView: UIView {
     init(delegate: CardActionViewDelegate) {
         self.delegate = delegate
         super.init(frame: .zero)
+        self.backgroundColor = .green
         setupUI()
         configure()
     }

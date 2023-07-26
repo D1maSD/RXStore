@@ -10,14 +10,9 @@ import UIKit
 
 final class BrandCell: UITableViewCell {
     
-    private let restInfoContentView: UIView = {
-        let view = UIView()
-        view.heightAnchor.constraint(equalToConstant: 300).isActive = true
-        return view
-    }()
-    private lazy var brandLabel: UILabel = {
+    var brandLabel: UILabel = {
         let priceLabel = UILabel()
-        priceLabel.text = "Bosh"
+        priceLabel.text = "Some brand"
         priceLabel.font = .systemFont20Bold
         return priceLabel
     }()
@@ -85,21 +80,20 @@ final class BrandCell: UITableViewCell {
     }
 
     private func setup() {
-        contentView.addSubview(restInfoContentView)
-                
-        restInfoContentView.addSubview(brandLabel)
-        restInfoContentView.addSubview(rightChevron)
-        restInfoContentView.addSubview(star)
-        restInfoContentView.addSubview(descriptionLabel)
-        restInfoContentView.addSubview(rateLabel)
-        restInfoContentView.addSubview(ratesLabel)
-        restInfoContentView.addSubview(articleLabel)
-        restInfoContentView.addSubview(numberOfSalesLabel)
-        restInfoContentView.addSubview(separatorlViewTwo)
-        restInfoContentView.addSubview(verticalViewRate)
+                    
+        contentView.addSubview(brandLabel)
+        contentView.addSubview(rightChevron)
+        contentView.addSubview(star)
+        contentView.addSubview(descriptionLabel)
+        contentView.addSubview(rateLabel)
+        contentView.addSubview(ratesLabel)
+        contentView.addSubview(articleLabel)
+        contentView.addSubview(numberOfSalesLabel)
+        contentView.addSubview(separatorlViewTwo)
+        contentView.addSubview(verticalViewRate)
         
         brandLabel.snp.makeConstraints {
-            $0.top.equalTo(self.restInfoContentView.snp.top).offset(20)
+            $0.top.equalTo(self.contentView.snp.top).offset(20)
             $0.left.equalToSuperview().offset(20)
             $0.height.equalTo(30)
         }
@@ -142,14 +136,15 @@ final class BrandCell: UITableViewCell {
         }
         numberOfSalesLabel.snp.makeConstraints {
             $0.top.equalTo(self.star.snp.bottom).offset(20)
-            $0.left.equalToSuperview().offset(20)
+            $0.left.equalTo(self.contentView.snp.left).offset(20)
         }
         separatorlViewTwo.snp.makeConstraints {
-            $0.centerX.equalTo(self.restInfoContentView.snp.centerX)
-            $0.left.equalToSuperview().offset(20)
-            $0.right.equalToSuperview().offset(20)
+            $0.centerX.equalTo(self.contentView.snp.centerX)
+            $0.left.equalTo(self.contentView.snp.left).offset(20)
+            $0.right.equalTo(self.contentView.snp.right).offset(20)
             $0.height.equalTo(1)
             $0.top.equalTo(self.numberOfSalesLabel.snp.bottom).offset(20)
+            $0.bottom.equalTo(self.contentView.snp.bottom)
         }
     }
     

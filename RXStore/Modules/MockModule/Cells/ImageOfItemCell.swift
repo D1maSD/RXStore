@@ -36,11 +36,7 @@ final class ImageOfItemCell: UITableViewCell, UIScrollViewDelegate {
         label.textAlignment = .center
         return view
     }()
-    private let sliderContentView: UIView = {
-        let view = UIView()
-        view.heightAnchor.constraint(equalToConstant: 500).isActive = true
-        return view
-    }()
+    
     private lazy var imageScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsHorizontalScrollIndicator = false
@@ -54,7 +50,7 @@ final class ImageOfItemCell: UITableViewCell, UIScrollViewDelegate {
         for i in 0..<views.count {
             scrollView.addSubview(views[i])
             
-            views[i].frame = CGRect(x: sliderContentView.frame.width * CGFloat(i), y: 0, width: sliderContentView.frame.width, height: 500)
+            views[i].frame = CGRect(x: contentView.frame.width * CGFloat(i), y: 0, width: contentView.frame.width, height: 500)
         }
         scrollView.delegate = self
         return scrollView
@@ -88,14 +84,18 @@ final class ImageOfItemCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     private func setup() {
-        contentView.addSubview(sliderContentView)
         
-        sliderContentView.addSubview(imageScrollView)
-        imageScrollView.edgeTo(view: sliderContentView)
-        
-        sliderContentView.addSubview(pageControl)
-        sliderContentView.addSubview(pageControlLabel)
-//        setupCardActionView()
+        contentView.addSubview(imageScrollView)
+        contentView.addSubview(pageControl)
+        contentView.addSubview(pageControlLabel)
+//        imageScrollView.edgeTo(view: contentView)
+        imageScrollView.snp.makeConstraints {
+            $0.top.equalTo(contentView.snp.top).offset(0)
+            $0.bottom.equalTo(contentView.snp.bottom).offset(0)
+            $0.leading.equalTo(contentView.snp.leading)
+            $0.trailing.equalTo(contentView.snp.trailing)
+            $0.height.equalTo(500)
+        }
         
         pageControl.snp.makeConstraints {
             $0.centerX.equalTo(self.imageScrollView.snp.centerX)

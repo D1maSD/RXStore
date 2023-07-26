@@ -8,10 +8,20 @@
 import UIKit
 
 
-protocol MockViewModelProtocol: CardActionViewDelegate {}
+protocol MockViewModelProtocol: CardActionViewDelegate {
+    func numberOfRowsInSection() -> Int
+}
 
 final class MockViewModel: MockViewModelProtocol {
     
+    var cellCount = 4
+    
+    func numberOfRowsInSection() -> Int {
+//        guard let cellCount = self.cellCount else {
+//            return 0
+//        }
+        return cellCount
+    }
 }
 extension MockViewModel: CardActionViewDelegate {
     func reloadButtonTap() {
