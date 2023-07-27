@@ -17,14 +17,14 @@ final class PriceOfItemCell: UITableViewCell {
     }()
     private lazy var priceLabel: UILabel = {
         let priceLabel = UILabel()
-        priceLabel.text = "4329 ₽"
+//        priceLabel.text = "4329 ₽"
         priceLabel.font = .systemFont20Bold
         return priceLabel
     }()
     
     private lazy var oldPriceLabel: UILabel = {
         let priceLabel = UILabel()
-        priceLabel.text = "6499 ₽"
+//        priceLabel.text = "6499 ₽"
         priceLabel.textColor = .gray
         priceLabel.font = .systemFont16Medium
         return priceLabel
@@ -40,7 +40,8 @@ final class PriceOfItemCell: UITableViewCell {
     private lazy var colorDescriptionLabel: UILabel = {
         let priceLabel = UILabel()
         priceLabel.text = "Зеленый, изумрудно зеленый"
-        priceLabel.textColor = .gray
+        priceLabel.textColor = .black
+        priceLabel.numberOfLines = 2
         priceLabel.font = .systemFont16Medium
         return priceLabel
     }()
@@ -66,9 +67,6 @@ final class PriceOfItemCell: UITableViewCell {
     }
 
     private func setup() {
-//        contentView.addSubview(restInfoContentView)
-        
-//        restInfoContentView.addSubview(priceLabel)
         
         contentView.addSubview(priceLabel)
         contentView.addSubview(oldPriceLabel)
@@ -118,13 +116,24 @@ final class PriceOfItemCell: UITableViewCell {
         separatorlView.snp.makeConstraints {
             $0.centerX.equalTo(self.contentView.snp.centerX)
             $0.left.equalTo(self.contentView.snp.left).offset(20)
-            $0.right.equalTo(self.contentView.snp.right).offset(20)
+            $0.right.equalTo(self.contentView.snp.right).offset(-20)
             $0.height.equalTo(1)
             $0.top.equalTo(self.imageOfItem.snp.bottom).offset(20)
             $0.bottom.equalTo(self.contentView.snp.bottom)
         }
     }
     
+    func setup(
+        priceLabel: String,
+        oldPriceLabel: String,
+        colorLabel: String,
+        colorDescriptionLabel: String
+    ) {
+        self.priceLabel.text = "\(priceLabel) ₽"
+        self.oldPriceLabel.text = "\(oldPriceLabel) ₽"
+        self.colorLabel.text = "Цвет: "
+        self.colorDescriptionLabel.text = colorDescriptionLabel
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SDWebImage
+
 
 class MockViewController: ViewController {
     
@@ -21,8 +23,16 @@ class MockViewController: ViewController {
     private var viewModel: MockViewModelProtocol
     private lazy var cardActionView = CardActionView(delegate: viewModel)
     
+    private var aboutItemCellConfigurator: AboutItemCellConfigurator?
+    private var brandCellConfigurator: BrandCellConfigurator?
+    private var priceOfItemCellConfigurator: PriceOfItemCellConfigurator?
+    private var imageOfItemCellConfigurator: ImageOfItemCellConfigurator?
+    
     init(viewModel: MockViewModelProtocol) {
         self.viewModel = viewModel
+//        self.viewModel.loadData()
+        self.sweetArray = self.viewModel.sweetArray
+        print("24 .\(self.sweetArray)")
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -42,10 +52,18 @@ class MockViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        setupTableView()
+        
 //        setupConstraints()
         setupCardActionView()
+//        loadData()
+        setupTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         loadData()
+        
     }
 }
 
@@ -70,23 +88,35 @@ extension MockViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
+            
+//            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: EventLocationCell.self)
+//            locationCellConfigurator?.setupCell(cell)
+//            cell.selectionStyle = .none
+//            return cell
+            
             let cell: ImageOfItemCell = tableView.dequeueReusableCell(for: indexPath)
+            imageOfItemCellConfigurator?.setupCell(cell)
             cell.selectionStyle = .none
             return cell
         case 1:
             let cell: PriceOfItemCell = tableView.dequeueReusableCell(for: indexPath)
+            priceOfItemCellConfigurator?.setupCell(cell)
             cell.selectionStyle = .none
             return cell
         case 2:
             let cell: BrandCell = tableView.dequeueReusableCell(for: indexPath)
+            brandCellConfigurator?.setupCell(cell)
             cell.selectionStyle = .none
-            let sweet = sweetArray[indexPath.row]
-                    
-            cell.brandLabel.text = "\(sweet.brandName)"
-//            cell.detailTextLabel?.text = "\(sweet.timeStamp)"
             return cell
+            
+//            let sweet = sweetArray[0]
+            
+//            print("24 .\(self.viewModel.sweetArray[0])")
+//            cell.brandLabel.text = "\(sweet.brandName)"
+//            cell.detailTextLabel?.text = "\(sweet.timeStamp)"
         case 3:
             let cell: AboutItemCell = tableView.dequeueReusableCell(for: indexPath)
+            aboutItemCellConfigurator?.setupCell(cell)
             cell.selectionStyle = .none
             return cell
         default:
@@ -132,16 +162,40 @@ extension MockViewController {
     }
     
     func loadData() {
-        FirestoreManager.db.collection("productPage").getDocuments() { querySnapshot, error in
-            if let error = error {
-                print("21 .\(error.localizedDescription)")
-            } else {
-                self.sweetArray = querySnapshot!.documents.flatMap({ProductPage(dictionary: $0.data())})
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
+        
+        self.viewModel.loadData { [weak self] response in
+            guard let self = self else { return }
+            print("print(22 .\(response))")
+            let item = response[0]
+            self.aboutItemCellConfigurator = AboutItemCellConfigurator(aboutProduct: "О товаре", descriptionProductLabel: item.detailedDescriptionOfProduct)
             
+            self.brandCellConfigurator = BrandCellConfigurator(
+                brandLabel: item.brandName,
+                descriptionLabel: item.descriptionOfProduct,
+                rateLabel: item.rate,
+                ratesLabel: item.allRates,
+                articleLabel: item.articleNumber,
+                numberOfSalesLabel: item.numberOfPurchases
+            )
+            self.priceOfItemCellConfigurator = PriceOfItemCellConfigurator(
+                priceLabel: item.price,
+                oldPriceLabel: item.oldPrice,
+                colorLabel: "Black",
+                colorDescriptionLabel: item.color
+            )
+            let image: UIImage
+            self.imageOfItemCellConfigurator = ImageOfItemCellConfigurator(imagesOfProduct: [item.productPhotos](), image: )
+            imageView.sd_setImage(with: URL(string: imageURL), completed: nil)
+
+            
+            self.tableView.reloadData()
+//            self.priceOfItemCellConfigurator =
+//            self.imageOfItemCellConfigurator =
         }
+        self.tableView.reloadData()
     }
+    
+//    func setup(model: ) {
+//        <#code#>
+//    }
 }

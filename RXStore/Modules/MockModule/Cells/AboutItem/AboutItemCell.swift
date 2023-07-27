@@ -25,7 +25,7 @@ final class AboutItemCell: UITableViewCell {
         let priceLabel = UILabel()
         priceLabel.text = "Функциональный и удобный фен BS-7799 отличается красивым дизайном и доступной ценой с большим набором функций. Отличается высоким качеством и надежностью, бережно сушит волосы. Это мощный и универсальный инструмент, с помощью которого можно не только высушить, но и аккуратно уложить ваши волосы."
         priceLabel.textColor = .gray
-        priceLabel.numberOfLines = 5
+        priceLabel.numberOfLines = 10
         priceLabel.font = .systemFont16Medium
         return priceLabel
     }()
@@ -49,6 +49,11 @@ final class AboutItemCell: UITableViewCell {
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
         }
+    }
+    
+    func setup(aboutProduct: String, descriptionProductLabel: String) {
+        self.aboutProduct.text = aboutProduct
+        self.descriptionProductLabel.text = descriptionProductLabel
     }
     
     

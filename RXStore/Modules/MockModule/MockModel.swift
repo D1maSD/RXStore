@@ -14,10 +14,7 @@ protocol DocumentSerializable  {
 
 
 struct ProductPage {
-//    var name:String
-//    var content:String
-//    var timeStamp:Date
-    
+
     var allRates: String
     var articleNumber: String
     var brandName: String
@@ -28,12 +25,12 @@ struct ProductPage {
     var productPhotos: String
     var rate: String
     var sameProducts: String
+    var numberOfPurchases: String
+    var detailedDescriptionOfProduct: String
     
     var dictionary:[String:Any] {
         return [
-//            "name":name,
-//            "content" : content,
-//            "timeStamp" : timeStamp
+
             
             "allRates" : allRates,
             "articleNumber" : articleNumber,
@@ -44,8 +41,9 @@ struct ProductPage {
             "price" : price,
             "productPhotos" : productPhotos,
             "rate" : rate,
-            "sameProducts" : sameProducts
-            
+            "sameProducts" : sameProducts,
+            "numberOfPurchases" : numberOfPurchases,
+            "detailedDescriptionOfProduct": detailedDescriptionOfProduct
         ]
     }
     
@@ -53,20 +51,19 @@ struct ProductPage {
 
 extension ProductPage : DocumentSerializable {
     init?(dictionary: [String : Any]) {
-//        guard let name = dictionary["name"] as? String,
-//            let content = dictionary["content"] as? String,
-//            let timeStamp = dictionary ["timeStamp"] as? Date else {return nil}
         
         guard let  allRates = dictionary["allRates"] as? String,
-            let  articleNumber = dictionary["articleNumber"] as? String,
-            let  brandName = dictionary["brandName"] as? String,
-            let  color = dictionary["color"] as? String,
-            let  descriptionOfProduct = dictionary["descriptionOfProduct"] as? String,
-            let  oldPrice = dictionary["oldPrice"] as? String,
-            let  price = dictionary["price"] as? String,
-            let  productPhotos = dictionary["productPhotos"] as? String,
-            let  rate = dictionary["rate"] as? String,
-            let  sameProducts = dictionary["sameProducts"] as? String else {return nil}
+            let articleNumber = dictionary["articleNumber"] as? String,
+            let brandName = dictionary["brandName"] as? String,
+            let color = dictionary["color"] as? String,
+            let descriptionOfProduct = dictionary["descriptionOfProduct"] as? String,
+            let oldPrice = dictionary["oldPrice"] as? String,
+            let price = dictionary["price"] as? String,
+            let productPhotos = dictionary["productPhotos"] as? String,
+            let rate = dictionary["rate"] as? String,
+            let sameProducts = dictionary["sameProducts"] as? String,
+            let numberOfPurchases = dictionary["numberOfPurchases"] as? String,
+            let detailedDescriptionOfProduct = dictionary["detailedDescriptionOfProduct"] as? String else {return nil}
             
         self.init(
             allRates: allRates,
@@ -78,7 +75,9 @@ extension ProductPage : DocumentSerializable {
             price: price,
             productPhotos: productPhotos,
             rate: rate,
-            sameProducts: sameProducts
+            sameProducts: sameProducts,
+            numberOfPurchases: numberOfPurchases,
+            detailedDescriptionOfProduct: detailedDescriptionOfProduct
         )
 //        self.init(name: name, content: content, timeStamp: timeStamp)
     }

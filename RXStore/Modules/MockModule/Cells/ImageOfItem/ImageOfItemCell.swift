@@ -68,6 +68,7 @@ final class ImageOfItemCell: UITableViewCell, UIScrollViewDelegate {
         return pageControl
     }()
     private lazy var views = [view0, view1, view2]
+    private lazy var imagesOfProduct = [UIImage()]
     private lazy var pageControlLabel: PageControlLabel = {
         let pageControl = PageControlLabel(
             frame: .zero,
@@ -88,7 +89,6 @@ final class ImageOfItemCell: UITableViewCell, UIScrollViewDelegate {
         contentView.addSubview(imageScrollView)
         contentView.addSubview(pageControl)
         contentView.addSubview(pageControlLabel)
-//        imageScrollView.edgeTo(view: contentView)
         imageScrollView.snp.makeConstraints {
             $0.top.equalTo(contentView.snp.top).offset(0)
             $0.bottom.equalTo(contentView.snp.bottom).offset(0)
@@ -116,6 +116,12 @@ final class ImageOfItemCell: UITableViewCell, UIScrollViewDelegate {
     @objc
     func pageControlTapHandler(sender: UIPageControl) {
         imageScrollView.scrollTo(horizontalPage: sender.currentPage, animated: true)
+    }
+    
+    func setup(
+        imagesOfProduct: [UIImage]
+    ) {
+        self.imagesOfProduct = imagesOfProduct
     }
     
     required init?(coder: NSCoder) {

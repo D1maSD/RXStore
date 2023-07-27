@@ -12,7 +12,6 @@ final class BrandCell: UITableViewCell {
     
     var brandLabel: UILabel = {
         let priceLabel = UILabel()
-        priceLabel.text = "Some brand"
         priceLabel.font = .systemFont20Bold
         return priceLabel
     }()
@@ -27,13 +26,12 @@ final class BrandCell: UITableViewCell {
         star.image = UIImage(named: "star")
         return star
     }()
-//    UIImage(named: "star")
     private lazy var descriptionLabel: UILabel = {
-        let priceLabel = UILabel()
-        priceLabel.text = "Фен для волос с насадками с диффузаром"
-        priceLabel.textColor = .gray
-        priceLabel.font = .systemFont16Medium
-        return priceLabel
+        let descriptionLabel = UILabel()
+        descriptionLabel.textColor = .black
+        descriptionLabel.numberOfLines = 5
+        descriptionLabel.font = .systemFont16Medium
+        return descriptionLabel
     }()
     private lazy var separatorlViewTwo: UIView = {
         let verticalView = UIView()
@@ -42,28 +40,24 @@ final class BrandCell: UITableViewCell {
     }()
     private lazy var rateLabel: UILabel = {
         let priceLabel = UILabel()
-        priceLabel.text = "3.9"
         priceLabel.textColor = .black
         priceLabel.font = .systemFont16Medium
         return priceLabel
     }()
     private lazy var ratesLabel: UILabel = {
         let priceLabel = UILabel()
-        priceLabel.text = "35 оценок"
         priceLabel.textColor = .black
         priceLabel.font = .systemFont14Medium
         return priceLabel
     }()
     private lazy var articleLabel: UILabel = {
         let priceLabel = UILabel()
-        priceLabel.text = "Арт: 140046250"
         priceLabel.textColor = .black
         priceLabel.font = .systemFont16Medium
         return priceLabel
     }()
     private lazy var numberOfSalesLabel: UILabel = {
         let priceLabel = UILabel()
-        priceLabel.text = "Купили более 300 раз"
         priceLabel.textColor = .black
         priceLabel.font = .systemFont16Medium
         return priceLabel
@@ -101,10 +95,11 @@ final class BrandCell: UITableViewCell {
         descriptionLabel.snp.makeConstraints {
             $0.top.equalTo(self.brandLabel.snp.bottom)
             $0.left.equalToSuperview().offset(20)
-            $0.height.equalTo(30)
+            $0.right.equalToSuperview().offset(-20)
+//            $0.height.equalTo(30)
         }
         rightChevron.snp.makeConstraints {
-            $0.left.equalTo((self.brandLabel.snp.right)).offset(20)
+            $0.left.equalTo((self.brandLabel.snp.right)).offset(10)
             $0.height.equalTo(15)
             $0.width.equalTo(7)
             $0.centerY.equalTo(self.brandLabel.snp.centerY)
@@ -141,13 +136,34 @@ final class BrandCell: UITableViewCell {
         separatorlViewTwo.snp.makeConstraints {
             $0.centerX.equalTo(self.contentView.snp.centerX)
             $0.left.equalTo(self.contentView.snp.left).offset(20)
-            $0.right.equalTo(self.contentView.snp.right).offset(20)
+            $0.right.equalTo(self.contentView.snp.right).offset(-20)
             $0.height.equalTo(1)
             $0.top.equalTo(self.numberOfSalesLabel.snp.bottom).offset(20)
             $0.bottom.equalTo(self.contentView.snp.bottom)
         }
     }
     
+//    brandLabel
+//    descriptionLabel
+//    rateLabel
+//    ratesLabel
+//    articleLabel
+//    numberOfSalesLabel
+    func setup(
+        brandLabel: String,
+        descriptionLabel: String,
+        rateLabel: String,
+        ratesLabel: String,
+        articleLabel: String,
+        numberOfSalesLabel: String
+    ) {
+        self.brandLabel.text = brandLabel
+        self.descriptionLabel.text = descriptionLabel
+        self.rateLabel.text = "\(rateLabel)"
+        self.ratesLabel.text = "\(ratesLabel) оценок"
+        self.articleLabel.text = "Арт: \(articleLabel)"
+        self.numberOfSalesLabel.text = "Купили более \(numberOfSalesLabel) раз" //numberOfSalesLabel
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
