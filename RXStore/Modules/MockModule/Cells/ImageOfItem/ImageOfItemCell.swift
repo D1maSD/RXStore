@@ -6,36 +6,19 @@
 //
 
 import UIKit
-
+import SDWebImage
 
 final class ImageOfItemCell: UITableViewCell, UIScrollViewDelegate {
     
-    private lazy var view0: UIImageView = {
-        let view = UIImageView()
-        view.backgroundColor = .systemTeal
-        let label = UILabel()
-        label.text = "Page 0"
-        label.textAlignment = .center
-        return view
-    }()
+    private var view0 = UIImageView()
+    private var view1 = UIImageView()
+    private var view2 = UIImageView()
+    private var view3 = UIImageView()
+    private var view4 = UIImageView()
+    private var view5 = UIImageView()
     
-    private lazy var view1: UIImageView = {
-        let view = UIImageView()
-        view.backgroundColor = .systemPink
-        let label = UILabel()
-        label.text = "Page 1"
-        label.textAlignment = .center
-        return view
-    }()
     
-    private lazy var view2: UIImageView = {
-        let view = UIImageView()
-        view.backgroundColor = .systemYellow
-        let label = UILabel()
-        label.text = "Page 2"
-        label.textAlignment = .center
-        return view
-    }()
+    private var isBeingOnCycle = false
     
     private lazy var imageScrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -43,14 +26,10 @@ final class ImageOfItemCell: UITableViewCell, UIScrollViewDelegate {
         scrollView.isPagingEnabled = true
         scrollView.contentSize = CGSize(width: contentView.frame.width * CGFloat(views.count), height: 500)
         scrollView.backgroundColor = .systemGray
-        view0.backgroundColor = .green
-        view1.backgroundColor = .red
-        view2.backgroundColor = .blue
         
         for i in 0..<views.count {
             scrollView.addSubview(views[i])
-            
-            views[i].frame = CGRect(x: contentView.frame.width * CGFloat(i), y: 0, width: contentView.frame.width, height: 500)
+            views[i].frame = CGRect(x: contentView.frame.width * CGFloat(i), y: 0, width: contentView.frame.width + 50, height: 500)
         }
         scrollView.delegate = self
         return scrollView
@@ -63,16 +42,19 @@ final class ImageOfItemCell: UITableViewCell, UIScrollViewDelegate {
             icon: UIImage(),
             cornerRadius: 10)
         pageControl.numberOfPages = views.count
+        print("22 . \(pageControl.numberOfPages)")
         pageControl.currentPage = 0
         pageControl.addTarget(self, action: #selector(pageControlTapHandler(sender:)), for: .touchUpInside)
         return pageControl
     }()
-    private lazy var views = [view0, view1, view2]
-    private lazy var imagesOfProduct = [UIImage()]
+    private lazy var views = [view0, view1, view2, view3, view4, view5]
+    private lazy var imagesOfProduct = [UIImageView]()
+    let image = UIImageView()
+    private lazy var imageUrls = [URL]()
     private lazy var pageControlLabel: PageControlLabel = {
         let pageControl = PageControlLabel(
             frame: .zero,
-            totalValue: String(views.count),
+            totalValue: String(imagesOfProduct.count),
             currentValue: String(1),
             cornerRadius: 10
         )
@@ -119,9 +101,34 @@ final class ImageOfItemCell: UITableViewCell, UIScrollViewDelegate {
     }
     
     func setup(
-        imagesOfProduct: [UIImage]
+        imagesOfProduct: [UIImageView],
+        urls: [String]
     ) {
-        self.imagesOfProduct = imagesOfProduct
+        
+        if !isBeingOnCycle {
+            for i in urls {
+                
+                self.isBeingOnCycle = true
+                let url = URL(string: "https://\(i)")
+                guard let url = url else {return}
+                print("21 .url \(url)")
+                self.imageUrls.append(url)
+                
+                let image = UIImageView()
+                image.sd_setImage(with: url)
+                self.imagesOfProduct.append(image)
+            }
+        }
+        setupToImage(imagesOfProduct: views, urls: imageUrls)
+
+        print("21 .self.imagesOfProduct: \(self.imagesOfProduct) self.views: \(self.views) imageUrls: \(self.imageUrls)")
+    }
+    
+    func setupToImage(imagesOfProduct: [UIImageView], urls: [URL]) {
+            for (index, urlString) in urls.enumerated() {
+                let imageView = imagesOfProduct[index]
+                    imageView.sd_setImage(with: urlString)
+            }
     }
     
     required init?(coder: NSCoder) {

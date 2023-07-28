@@ -12,17 +12,20 @@ final class PriceOfItemCellConfigurator: ListCellConfiguration {
     private var oldPriceLabel: String?
     private var colorLabel: String?
     private var colorDescriptionLabel: String?
+    var url: [String]?
     
     init(
         priceLabel: String,
         oldPriceLabel: String,
         colorLabel: String,
-        colorDescriptionLabel: String
+        colorDescriptionLabel: String,
+        url: [String]
     ) {
         self.priceLabel = priceLabel
         self.oldPriceLabel = oldPriceLabel
         self.colorLabel = colorLabel
         self.colorDescriptionLabel = colorDescriptionLabel
+        self.url = url
     }
     
     func setupCell(_ cell: UIView) {
@@ -33,13 +36,15 @@ final class PriceOfItemCellConfigurator: ListCellConfiguration {
             let priceLabel = priceLabel,
             let oldPriceLabel = oldPriceLabel,
             let colorLabel = colorLabel,
-            let colorDescriptionLabel = colorDescriptionLabel else { return }
+            let colorDescriptionLabel = colorDescriptionLabel,
+            let url = url else { return }
         
         cell.setup(
             priceLabel: priceLabel,
             oldPriceLabel: oldPriceLabel,
             colorLabel: colorLabel,
-            colorDescriptionLabel: colorDescriptionLabel
+            colorDescriptionLabel: colorDescriptionLabel,
+            url: url
         )
     }
     

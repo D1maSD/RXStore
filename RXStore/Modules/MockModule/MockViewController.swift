@@ -32,8 +32,9 @@ class MockViewController: ViewController {
         self.viewModel = viewModel
 //        self.viewModel.loadData()
         self.sweetArray = self.viewModel.sweetArray
-        print("24 .\(self.sweetArray)")
         super.init(nibName: nil, bundle: nil)
+        self.viewModel.delegate = self
+        print("24 .\(self.sweetArray)")
     }
     
     required init?(coder: NSCoder) {
@@ -52,7 +53,6 @@ class MockViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
 //        setupConstraints()
         setupCardActionView()
 //        loadData()
@@ -67,10 +67,13 @@ class MockViewController: ViewController {
     }
 }
 
+extension MockViewController: MockViewModelDelegate {
+    
+}
+
 extension MockViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x / view.frame.width)
-        
     }
     
     private func setupCardActionView() {
@@ -88,12 +91,6 @@ extension MockViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            
-//            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: EventLocationCell.self)
-//            locationCellConfigurator?.setupCell(cell)
-//            cell.selectionStyle = .none
-//            return cell
-            
             let cell: ImageOfItemCell = tableView.dequeueReusableCell(for: indexPath)
             imageOfItemCellConfigurator?.setupCell(cell)
             cell.selectionStyle = .none
@@ -108,12 +105,6 @@ extension MockViewController: UITableViewDataSource, UITableViewDelegate {
             brandCellConfigurator?.setupCell(cell)
             cell.selectionStyle = .none
             return cell
-            
-//            let sweet = sweetArray[0]
-            
-//            print("24 .\(self.viewModel.sweetArray[0])")
-//            cell.brandLabel.text = "\(sweet.brandName)"
-//            cell.detailTextLabel?.text = "\(sweet.timeStamp)"
         case 3:
             let cell: AboutItemCell = tableView.dequeueReusableCell(for: indexPath)
             aboutItemCellConfigurator?.setupCell(cell)
@@ -141,7 +132,7 @@ extension MockViewController {
     func setupConstraints() {
         
     }
-    
+//  https://
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -154,7 +145,8 @@ extension MockViewController {
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints {
-            $0.top.equalTo(self.view.snp.top)
+//            $0.top.equalTo(self.view.snp.top)
+            $0.top.equalTo(self.cardActionView.snp.bottom)
             $0.bottom.equalTo(self.view.snp.bottom)
             $0.left.equalTo(self.view.snp.left)
             $0.right.equalTo(self.view.snp.right)
@@ -181,21 +173,11 @@ extension MockViewController {
                 priceLabel: item.price,
                 oldPriceLabel: item.oldPrice,
                 colorLabel: "Black",
-                colorDescriptionLabel: item.color
+                colorDescriptionLabel: item.color, url: item.otherColors
             )
-            let image: UIImage
-            self.imageOfItemCellConfigurator = ImageOfItemCellConfigurator(imagesOfProduct: [item.productPhotos](), image: )
-            imageView.sd_setImage(with: URL(string: imageURL), completed: nil)
-
-            
+            self.imageOfItemCellConfigurator = ImageOfItemCellConfigurator(imagesOfProduct: [UIImageView](), url: item.productPhotos)
             self.tableView.reloadData()
-//            self.priceOfItemCellConfigurator =
-//            self.imageOfItemCellConfigurator =
         }
         self.tableView.reloadData()
     }
-    
-//    func setup(model: ) {
-//        <#code#>
-//    }
 }

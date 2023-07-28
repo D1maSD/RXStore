@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 
 final class PriceOfItemCell: UITableViewCell {
@@ -21,7 +22,8 @@ final class PriceOfItemCell: UITableViewCell {
         priceLabel.font = .systemFont20Bold
         return priceLabel
     }()
-    
+    private lazy var imageUrls = [URL]()
+    private var isBeingOnCycle = false
     private lazy var oldPriceLabel: UILabel = {
         let priceLabel = UILabel()
 //        priceLabel.text = "6499 ₽"
@@ -45,12 +47,6 @@ final class PriceOfItemCell: UITableViewCell {
         priceLabel.font = .systemFont16Medium
         return priceLabel
     }()
-    private lazy var imageOfItem: UIImageView = {
-        let imageOfItem = UIImageView()
-        imageOfItem.layer.cornerRadius = 3
-        imageOfItem.backgroundColor = .cyan
-        return imageOfItem
-    }()
     private lazy var verticalView: UIView = {
         let verticalView = UIView()
         verticalView.backgroundColor = .gray
@@ -61,6 +57,47 @@ final class PriceOfItemCell: UITableViewCell {
         verticalView.backgroundColor = .gray
         return verticalView
     }()
+    
+    private lazy var views = [imageOfItem, imageOfItem1, imageOfItem2, imageOfItem3, imageOfItem4, imageOfItem5]
+    
+    private lazy var imageOfItem: UIImageView = {
+        let imageOfItem = UIImageView()
+        imageOfItem.layer.cornerRadius = 3
+        imageOfItem.backgroundColor = .cyan
+        return imageOfItem
+    }()
+    private lazy var imageOfItem1: UIImageView = {
+        let imageOfItem = UIImageView()
+        imageOfItem.layer.cornerRadius = 3
+        imageOfItem.backgroundColor = .cyan
+        return imageOfItem
+    }()
+    private lazy var imageOfItem2: UIImageView = {
+        let imageOfItem = UIImageView()
+        imageOfItem.layer.cornerRadius = 3
+        imageOfItem.backgroundColor = .cyan
+        return imageOfItem
+    }()
+    private lazy var imageOfItem3: UIImageView = {
+        let imageOfItem = UIImageView()
+        imageOfItem.layer.cornerRadius = 3
+        imageOfItem.backgroundColor = .cyan
+        return imageOfItem
+    }()
+    private lazy var imageOfItem4: UIImageView = {
+        let imageOfItem = UIImageView()
+        imageOfItem.layer.cornerRadius = 3
+        imageOfItem.backgroundColor = .cyan
+        return imageOfItem
+    }()
+    private lazy var imageOfItem5: UIImageView = {
+        let imageOfItem = UIImageView()
+        imageOfItem.layer.cornerRadius = 3
+        imageOfItem.backgroundColor = .cyan
+        return imageOfItem
+    }()
+    
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
@@ -73,7 +110,18 @@ final class PriceOfItemCell: UITableViewCell {
         contentView.addSubview(verticalView)
         contentView.addSubview(colorLabel)
         contentView.addSubview(colorDescriptionLabel)
+        
+        
+        
         contentView.addSubview(imageOfItem)
+        contentView.addSubview(imageOfItem1)
+        contentView.addSubview(imageOfItem2)
+        contentView.addSubview(imageOfItem3)
+        contentView.addSubview(imageOfItem4)
+        contentView.addSubview(imageOfItem5)
+        
+        
+        
         contentView.addSubview(separatorlView)
 
         
@@ -107,12 +155,50 @@ final class PriceOfItemCell: UITableViewCell {
             $0.height.equalTo(30)
         }
         
+        
+        
+        
         imageOfItem.snp.makeConstraints {
             $0.top.equalTo(self.colorLabel.snp.bottom).offset(20)
-            $0.left.equalTo(self.contentView.snp.left).offset(20)
+            $0.left.equalTo(self.contentView.snp.left).offset(15)
             $0.height.equalTo(70)
             $0.width.equalTo(50)
         }
+        imageOfItem1.snp.makeConstraints {
+            $0.top.equalTo(self.colorLabel.snp.bottom).offset(20)
+            $0.left.equalTo(self.imageOfItem.snp.right).offset(15)
+            $0.height.equalTo(70)
+            $0.width.equalTo(50)
+        }
+        imageOfItem2.snp.makeConstraints {
+            $0.top.equalTo(self.colorLabel.snp.bottom).offset(20)
+            $0.left.equalTo(self.imageOfItem1.snp.right).offset(15)
+            $0.height.equalTo(70)
+            $0.width.equalTo(50)
+        }
+        imageOfItem3.snp.makeConstraints {
+            $0.top.equalTo(self.colorLabel.snp.bottom).offset(20)
+            $0.left.equalTo(self.imageOfItem2.snp.right).offset(15)
+            $0.height.equalTo(70)
+            $0.width.equalTo(50)
+        }
+        imageOfItem4.snp.makeConstraints {
+            $0.top.equalTo(self.colorLabel.snp.bottom).offset(20)
+            $0.left.equalTo(self.imageOfItem3.snp.right).offset(15)
+            $0.height.equalTo(70)
+            $0.width.equalTo(50)
+        }
+        imageOfItem5.snp.makeConstraints {
+            $0.top.equalTo(self.colorLabel.snp.bottom).offset(20)
+            $0.left.equalTo(self.imageOfItem4.snp.right).offset(15)
+            $0.height.equalTo(70)
+            $0.width.equalTo(50)
+        }
+        
+        
+        
+        
+        
         separatorlView.snp.makeConstraints {
             $0.centerX.equalTo(self.contentView.snp.centerX)
             $0.left.equalTo(self.contentView.snp.left).offset(20)
@@ -127,12 +213,37 @@ final class PriceOfItemCell: UITableViewCell {
         priceLabel: String,
         oldPriceLabel: String,
         colorLabel: String,
-        colorDescriptionLabel: String
+        colorDescriptionLabel: String,
+        url: [String]
     ) {
         self.priceLabel.text = "\(priceLabel) ₽"
         self.oldPriceLabel.text = "\(oldPriceLabel) ₽"
         self.colorLabel.text = "Цвет: "
         self.colorDescriptionLabel.text = colorDescriptionLabel
+//        self.imageUrls = url
+        if !isBeingOnCycle {
+            for i in url {
+                
+                self.isBeingOnCycle = true
+                let url = URL(string: "https://\(i)")
+                guard let url = url else {return}
+                print("21 .url \(url)")
+                self.imageUrls.append(url)
+                
+                let image = UIImageView()
+                image.sd_setImage(with: url)
+//                self.imagesOfProduct.append(image)
+            }
+        }
+        
+        setupToImage(imagesOfProduct: views, urls: imageUrls)
+    }
+    
+    func setupToImage(imagesOfProduct: [UIImageView], urls: [URL]) {
+            for (index, urlString) in urls.enumerated() {
+                let imageView = imagesOfProduct[index]
+                    imageView.sd_setImage(with: urlString)
+            }
     }
     
     required init?(coder: NSCoder) {

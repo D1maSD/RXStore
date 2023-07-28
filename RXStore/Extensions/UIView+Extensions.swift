@@ -45,4 +45,25 @@ extension UIView {
             $0.removeFromSuperview()
         }
     }
+    
+    class var nibName: String {
+        return String(describing: self)
+    }
+
+    class func fromNib<T: UIView>() -> T {
+        return Bundle.main.loadNibNamed(String(describing: T.self),
+                                        owner: nil,
+                                        options: nil)?
+            .first as! T // swiftlint:disable:this force_cast
+    }
+
+    func connectNibUI() -> Any? {
+        let nibView = Bundle.main.loadNibNamed(String(describing: type(of: self)),
+                                               owner: nil,
+                                               options: nil)?
+            .first as! UIView // swiftlint:disable:this force_cast
+        nibView.frame = frame
+        self.addSubview(nibView)
+        return nibView
+    }
 }

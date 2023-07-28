@@ -22,16 +22,15 @@ struct ProductPage {
     var descriptionOfProduct: String
     var oldPrice: String
     var price: String
-    var productPhotos: String
+    var productPhotos: [String]
     var rate: String
     var sameProducts: String
     var numberOfPurchases: String
     var detailedDescriptionOfProduct: String
+    var otherColors: [String]
     
     var dictionary:[String:Any] {
         return [
-
-            
             "allRates" : allRates,
             "articleNumber" : articleNumber,
             "brandName" : brandName,
@@ -43,7 +42,8 @@ struct ProductPage {
             "rate" : rate,
             "sameProducts" : sameProducts,
             "numberOfPurchases" : numberOfPurchases,
-            "detailedDescriptionOfProduct": detailedDescriptionOfProduct
+            "detailedDescriptionOfProduct": detailedDescriptionOfProduct,
+            "otherColors": otherColors
         ]
     }
     
@@ -59,11 +59,12 @@ extension ProductPage : DocumentSerializable {
             let descriptionOfProduct = dictionary["descriptionOfProduct"] as? String,
             let oldPrice = dictionary["oldPrice"] as? String,
             let price = dictionary["price"] as? String,
-            let productPhotos = dictionary["productPhotos"] as? String,
+            let productPhotos = dictionary["productPhotos"] as? [String],
             let rate = dictionary["rate"] as? String,
             let sameProducts = dictionary["sameProducts"] as? String,
             let numberOfPurchases = dictionary["numberOfPurchases"] as? String,
-            let detailedDescriptionOfProduct = dictionary["detailedDescriptionOfProduct"] as? String else {return nil}
+            let detailedDescriptionOfProduct = dictionary["detailedDescriptionOfProduct"] as? String,
+            let otherColors = dictionary["otherColors"] as? [String] else {return nil}
             
         self.init(
             allRates: allRates,
@@ -77,7 +78,8 @@ extension ProductPage : DocumentSerializable {
             rate: rate,
             sameProducts: sameProducts,
             numberOfPurchases: numberOfPurchases,
-            detailedDescriptionOfProduct: detailedDescriptionOfProduct
+            detailedDescriptionOfProduct: detailedDescriptionOfProduct,
+            otherColors: otherColors
         )
 //        self.init(name: name, content: content, timeStamp: timeStamp)
     }

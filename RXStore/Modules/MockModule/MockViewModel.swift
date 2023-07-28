@@ -10,14 +10,31 @@ import UIKit
 
 protocol MockViewModelProtocol: CardActionViewDelegate {
     func numberOfRowsInSection() -> Int
+    var delegate: MockViewModelDelegate? { get set }
     func loadData(completion: @escaping ([ProductPage]) -> Void)
     var sweetArray: [ProductPage] { get }
+    var routes: ((MockRoutes) -> Void)? { get set }
+}
+
+protocol MockViewModelDelegate: AnyObject {
+//    func loadingAnimation(start: Bool)
+//    func emptyPlugView(show: Bool)
+}
+
+enum MockRoutes {
+    case showFilterScreen(filters: Filters)
+}
+
+enum MockViewRoutes {
+    case showFilterScreen(filters: Filters)
 }
 
 final class MockViewModel: MockViewModelProtocol {
+    var delegate: MockViewModelDelegate?
+    
     
     var cellCount = 4
-    
+    var routes: ((MockRoutes) -> Void)?
     var sweetArray = [ProductPage]()
     let firestoreManager = FirestoreManager()
     
@@ -44,13 +61,36 @@ final class MockViewModel: MockViewModelProtocol {
             
         }
     }
+    
+    func showFiltersScreen() {
+        print("23 .showFiltersScreen")
+//        routes?(.showFilterScreen(filters: filters))
+    }
+    
+    func getCards(withPaging: Bool) {
+//        guard !isLoading else { return }
+//        if !noMoreEvents {
+//            delegate?.loadingAnimation(start: true)
+//            isLoading = true
+//            loadCards(withPaging: withPaging) { [weak self] configurators in
+//                guard let collectionManager = self?.collectionManager else { return }
+//                collectionManager.update(isPaging: withPaging, configurators: configurators)
+//                self?.noMoreEvents = configurators.isEmpty
+//                self?.delegate?.emptyPlugView(show: collectionManager.configuratorsIsEmpty )
+//                self?.delegate?.loadingAnimation(start: false)
+//                self?.isLoading = false
+//            }
+//        }
+    }
 }
 extension MockViewModel: CardActionViewDelegate {
     func reloadButtonTap() {
-        print("reloadButtonTap()")
+        getCards(withPaging: false)
     }
     
     func filterButtonTap() {
-        print("filterButtonTap()")
+//        noMoreEvents = false
+        showFiltersScreen()
     }
 }
+
