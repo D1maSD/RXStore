@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let navigationContrller = UINavigationController(rootViewController: storeCoordinator.start() ?? UIViewController())
         FirebaseApp.configure()
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = storeCoordinator.start()
+        window?.rootViewController = mockCoordinator.start()
         window?.makeKeyAndVisible()
         return true
     }

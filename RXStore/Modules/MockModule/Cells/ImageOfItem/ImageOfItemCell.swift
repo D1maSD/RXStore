@@ -104,21 +104,23 @@ final class ImageOfItemCell: UITableViewCell, UIScrollViewDelegate {
         imagesOfProduct: [UIImageView],
         urls: [String]
     ) {
-        
-        if !isBeingOnCycle {
+        self.imageUrls = []
+        self.imagesOfProduct = []
+//        if !isBeingOnCycle {
             for i in urls {
                 
                 self.isBeingOnCycle = true
                 let url = URL(string: "https://\(i)")
                 guard let url = url else {return}
-                print("21 .url \(url)")
+                print("23 .url \(url) isBeingOnCycle \(isBeingOnCycle)")
+                
                 self.imageUrls.append(url)
                 
                 let image = UIImageView()
                 image.sd_setImage(with: url)
                 self.imagesOfProduct.append(image)
             }
-        }
+//        }
         setupToImage(imagesOfProduct: views, urls: imageUrls)
 
         print("21 .self.imagesOfProduct: \(self.imagesOfProduct) self.views: \(self.views) imageUrls: \(self.imageUrls)")

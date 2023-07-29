@@ -12,6 +12,7 @@ protocol FilterViewModelProtocol {
     var routes: ((FilterRoutes) -> Void)? { get set }
     var categorysHaveTravels: Bool? { get }
     func dismissFilters()
+//    var delegate: ApplyFilterButtonViewDelegate? { get set }
     func recordFilterButtonTap(filterSection: CellWithFilterSelectionType, filterType: FilterCheckedButtonType, active: Bool)
     func filtersChecked(type: CellWithFilterSelectionType) -> [FilterCheckedButtonType]?
     func applyButtonTap()
@@ -25,8 +26,9 @@ enum FilterRoutes {
     case dismiss
     case chooseCountry
     case applyFilters(Filters)
+    case applyFiltersArray([String])
 }
-
+//filteredModel = [String]()
 final class FilterViewModel: FilterViewModelProtocol {
     var routes: ((FilterRoutes) -> Void)?
     
@@ -37,6 +39,7 @@ final class FilterViewModel: FilterViewModelProtocol {
 
     private var originalFilterModel: Filters?
     private var filterModel: Filters
+    private var filteredModel = [String]()
 
     init(filters: Filters) {
         filterModel = filters
@@ -58,9 +61,10 @@ final class FilterViewModel: FilterViewModelProtocol {
     func dismissFilters() {
         routes?(.dismiss)
     }
-
+    //NOTE: Here we tap filterApply
     func applyButtonTap() {
         routes?(.applyFilters(filterModel))
+        routes?(.applyFiltersArray(filteredModel))
     }
 
     func recordFilterButtonTap(filterSection: CellWithFilterSelectionType, filterType: FilterCheckedButtonType, active: Bool) {
@@ -68,10 +72,17 @@ final class FilterViewModel: FilterViewModelProtocol {
         case .category:
             if active {
                 if let categoryFilter = filterType.toCategoriesType() {
+                    filteredModel.append(categoryFilter.rawValue)
+                    print("26 .filteredModel \(filteredModel)")
+                    //NOTE: Добавил rawValue of selected object
+                    
 //                    guard !(filterModel.category?.contains(categoryFilter) ?? false) else { return }
 //                    filterModel.category?.append(categoryFilter)
                 }
             } else {
+                //NOTE: Delete from array if button is deselected
+                filteredModel.removeAll()
+                print("26 .filteredModel \(filteredModel)")
                 if filterType == .first {
 //                    filterModel.showAllCities = false
                 }
@@ -80,27 +91,8 @@ final class FilterViewModel: FilterViewModelProtocol {
 //                }
             }
         case .gender: break
-//            if active {
-//                if let genderFilter = filterType.toGenderType() {
-//                    guard !(filterModel.gender?.contains(genderFilter) ?? false) else { return }
-//                    filterModel.gender?.append(genderFilter)
-//                }
-//            } else {
-//                filterModel.gender?.removeAll { value in
-//                    return value == filterType.toGenderType()
-//                }
-//            }
+            
         case .age: break
-//            if active {
-//                if let ageFilter = filterType.toAgeType() {
-//                    guard !(filterModel.ageGroup?.contains(ageFilter) ?? false) else { return }
-//                    filterModel.ageGroup?.append(ageFilter)
-//                }
-//            } else {
-//                filterModel.ageGroup?.removeAll { value in
-//                    return value == filterType.toAgeType()
-//                }
-//            }
         }
     }
 
@@ -118,5 +110,12 @@ final class FilterViewModel: FilterViewModelProtocol {
 
     func clearFilters() {
         filterModel.clear()
+    }
+}
+
+extension FilterViewModel: ApplyFilterButtonViewDelegate {
+    func buttonTap() {
+        print("24 .applyButtonTap")
+        applyButtonTap()
     }
 }

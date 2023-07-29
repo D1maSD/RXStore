@@ -1,10 +1,3 @@
-//
-//  ApplyFilterButtonView.swift
-//  RXStore
-//
-//  Created by Мельник Дмитрий on 28.07.2023.
-//
-
 import UIKit
 
 protocol ApplyFilterButtonViewDelegate: AnyObject {
@@ -27,7 +20,7 @@ final class ApplyFilterButtonView: UIView {
     }
 
     func buttonState(state: Bool) {
-        print("12 .buttonState \(state))")
+        print("50 .buttonState \(state))")
         applyButton.updateState(isActive: state)
     }
 
@@ -52,4 +45,3 @@ final class ApplyFilterButtonView: UIView {
         delegate?.buttonTap()
     }
 }
-

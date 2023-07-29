@@ -17,12 +17,12 @@ protocol FilterListManagerDelegate: AnyObject {
 }
 
 enum FilterSectionTypes {
-    case chooseCategory
+    case chooseColor
 }
 //, FilterListManagerDelegate
 final class FilterViewController: ViewController {
 
-    private var section: [FilterSectionTypes] = [.chooseCategory]
+    private var section: [FilterSectionTypes] = [.chooseColor]
     private let viewModel: FilterViewModelProtocol
     private let tableView = TableViewFactory.make()
     private let categoryCellConfigurator = CellWithFilterSelectionConfigurator(type: .category)
@@ -34,7 +34,9 @@ final class FilterViewController: ViewController {
 //        super.init(addToTopOffset: 44)
 //        listManager.delegate = self
         super.init(nibName: nil, bundle: nil)
+//        applyButtonView.delegate = self.viewModel
         applyButtonView.delegate = self
+
         
     }
 
@@ -71,6 +73,7 @@ final class FilterViewController: ViewController {
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.isUserInteractionEnabled = true
 //        listManager?.attach(tableView)
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
@@ -126,6 +129,8 @@ final class FilterViewController: ViewController {
     }
     
     func filterButtonTap(filterSection: CellWithFilterSelectionType, filterType: FilterCheckedButtonType, active: Bool) {
+        print("26 .\(filterType) active: \(active)")
+        
         viewModel.recordFilterButtonTap(filterSection: filterSection, filterType: filterType, active: active)
         updateButtonsStates()
         updateCheckedFilters()
@@ -144,6 +149,7 @@ final class FilterViewController: ViewController {
 
 extension FilterViewController: ApplyFilterButtonViewDelegate {
     func buttonTap() {
+        print("24 .applyButtonTap")
         viewModel.applyButtonTap()
     }
 }
@@ -173,7 +179,7 @@ extension FilterViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch section[indexPath.section] {
-        case .chooseCategory:
+        case .chooseColor:
 //            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: CellWithFilterSelection.self)
             let cell: CellWithFilterSelection = tableView.dequeueReusableCell(for: indexPath)
             categoryCellConfigurator.setupCell(cell)
@@ -189,6 +195,7 @@ extension FilterViewController: CellWithFilterSelectionDelegate {
     }
 
     func filterButtonTapped(filterSection: CellWithFilterSelectionType, filterType: FilterCheckedButtonType, active: Bool) {
+        print("12 .filterButtonTapped")
         filterButtonTap(filterSection: filterSection, filterType: filterType, active: active)
     }
 }

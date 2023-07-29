@@ -52,19 +52,47 @@ struct ProductPage {
 extension ProductPage : DocumentSerializable {
     init?(dictionary: [String : Any]) {
         
-        guard let  allRates = dictionary["allRates"] as? String,
-            let articleNumber = dictionary["articleNumber"] as? String,
-            let brandName = dictionary["brandName"] as? String,
-            let color = dictionary["color"] as? String,
-            let descriptionOfProduct = dictionary["descriptionOfProduct"] as? String,
-            let oldPrice = dictionary["oldPrice"] as? String,
-            let price = dictionary["price"] as? String,
-            let productPhotos = dictionary["productPhotos"] as? [String],
-            let rate = dictionary["rate"] as? String,
-            let sameProducts = dictionary["sameProducts"] as? String,
-            let numberOfPurchases = dictionary["numberOfPurchases"] as? String,
-            let detailedDescriptionOfProduct = dictionary["detailedDescriptionOfProduct"] as? String,
-            let otherColors = dictionary["otherColors"] as? [String] else {return nil}
+        guard let  allRates = dictionary["allRates"] as? String else {
+            print("30 .allRates nil")
+            return nil}
+        print("31 .allRates \(allRates)")
+        guard let articleNumber = dictionary["articleNumber"] as? String else {
+                print("30 .articleNumber nil")
+                return nil}
+        guard let brandName = dictionary["brandName"] as? String else {
+                print("30 .brandName nil")
+                return nil}
+        guard let color = dictionary["color"] as? String else {
+                print("30 .color nil")
+                return nil}
+        guard let descriptionOfProduct = dictionary["descriptionOfProduct"] as? String else {
+                print("30 .descriptionOfProduct nil")
+                return nil}
+        guard let oldPrice = dictionary["oldPrice"] as? String else {
+                print("30 .oldPrice nil")
+                return nil}
+        guard let price = dictionary["price"] as? String else {
+            print("30 .price nil")
+            return nil}
+        guard let rate = dictionary["rate"] as? String else {
+                print("30 .rate nil")
+                return nil}
+        guard let sameProducts = dictionary["sameProducts"] as? String else {
+                print("30 .sameProducts nil")
+                return nil}
+        guard let numberOfPurchases = dictionary["numberOfPurchases"] as? String else {
+                print("30 .numberOfPurchases nil")
+                return nil}
+        print("31 .numberOfPurchases \(numberOfPurchases)")
+        guard let detailedDescriptionOfProduct = dictionary["detailedDescriptionOfProduct"] as? String else {
+                print("30 .detailedDescriptionOfProduct nil")
+                return nil}
+        guard let otherColors = dictionary["otherColors"] as? [String] else {
+            print("30 .otherColors nil")
+            return nil}
+        guard let productPhotos = dictionary["productPhotos"] as? [String] else {
+                print("30 .productPhotos nil")
+                return nil}
             
         self.init(
             allRates: allRates,

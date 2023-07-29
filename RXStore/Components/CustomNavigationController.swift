@@ -16,7 +16,7 @@ enum NavigationType {
         case .white:
             return .red
         case .clear:
-            return .orange
+            return .clear
         }
     }
 
@@ -33,7 +33,7 @@ enum NavigationType {
 class CustomNavigationController: UINavigationController {
     internal lazy var customNavigationBar = CustomNavigationBarView(self)
     private var navigationType: NavigationType = .white
-    internal var customNavigationIsHiden: Bool = false {
+    internal var customNavigationIsHiden: Bool = true {
         didSet {
             print("21 .\(customNavigationIsHiden)")
             customNavigationNeeded(customNavigationIsHiden)

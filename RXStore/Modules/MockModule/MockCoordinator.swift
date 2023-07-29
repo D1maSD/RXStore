@@ -15,10 +15,11 @@ final class MockCoordinator: Coordinator {
     
     func start() -> UIViewController? {
         let viewModel = MockViewModel()
+        bindMockViewModel(viewModel: viewModel)
         let viewController = MockViewController(viewModel: viewModel)
         mockViewController = viewController
         let navController = CustomNavigationController(viewController)
-        navController.customNavigationIsHiden = false
+        navController.customNavigationIsHiden = true
         navigationController = navController
         return navController
     }
@@ -30,26 +31,34 @@ final class MockCoordinator: Coordinator {
         let controller = FilterViewController(viewModel: viewModel)
         filterViewController = controller
         navigationController?.customNavigationIsHiden = false
-        navigationController?.pushViewController(controller, animated: true, type: .white)
+        navigationController?.pushViewController(controller, animated: true, type: .clear)
     }
     
     private func bindFilterViewModel(viewModel: FilterViewModel) {
-//        viewModel.routes = { [weak self] routes in
-//            switch routes {
-//            case .dismiss:
+        viewModel.routes = { [weak self] routes in
+            switch routes {
+            case .dismiss:
 //                self?.peopleGoViewController?.moovedFromAnotherTab = false
-//                self?.navigationController?.popToViewController(animated: true)
-//                self?.navigationController?.customNavigationIsHiden = true
-//            case .applyFilters(let filterModel):
-//                self?.peopleGoViewController?.moovedFromAnotherTab = false
-//                self?.peopleGoViewController?.saveNewFilters(filters: filterModel)
-//                self?.navigationController?.popToViewController(animated: true)
-//                self?.navigationController?.customNavigationIsHiden = true
-//            case .chooseCountry:
+                self?.navigationController?.popToViewController(animated: true)
+                self?.navigationController?.customNavigationIsHiden = true
+            case .applyFilters(let filterModel):
+                print("bindFilterViewModel MockCoordinator")
+//                self?.mockViewController?.moovedFromAnotherTab = false
+                self?.mockViewController?.saveNewFilters(filters: filterModel)
+                self?.navigationController?.popToViewController(animated: true)
+                self?.navigationController?.customNavigationIsHiden = true
+            case .chooseCountry: break
 //                self?.showChooseCountry()
-//            }
-//        }
+            case .applyFiltersArray(let filterModel):
+                print("27 .filterModel \(filterModel)")
+//                self?.mockViewController?.moovedFromAnotherTab = false
+                self?.mockViewController?.saveNewFiltersArray(filters: filterModel)
+                self?.navigationController?.popToViewController(animated: true)
+                self?.navigationController?.customNavigationIsHiden = true
+            }
+        }
     }
+    
     
     private func bindMockViewModel(viewModel: MockViewModel) {
         viewModel.routes = { [weak self] routes in

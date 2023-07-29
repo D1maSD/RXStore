@@ -125,7 +125,7 @@ final class CellWithFilterSelection: UITableViewCell {
     func setupFilterChooseCellsSize(categorysNames: [String]) {
         cellSizes = categorysNames.map { item -> CGSize in
             let width = Double(self.collectionView.bounds.width)
-            var size = FontFamily.Montserrat.bold.font(size: 15).sizeOfString(string: item, constrainedToWidth: width)
+            var size = UIFont.systemFont14Semibold.sizeOfString(string: item, constrainedToWidth: width)
             size.width += 44
             return size
         }
@@ -152,6 +152,7 @@ final class CellWithFilterSelection: UITableViewCell {
             make.leading.equalToSuperview().offset(11)
             make.trailing.equalToSuperview().offset(-11)
             make.height.equalTo(44)
+            make.bottom.equalToSuperview()
         }
     }
 }
@@ -184,23 +185,10 @@ extension CellWithFilterSelection: UICollectionViewDelegate, UICollectionViewDel
 
 extension CellWithFilterSelection: FilterChooseCellDelegate {
     func filterButtonTap(type: FilterCheckedButtonType, active: Bool) {
+        print("12 .filterButtonTap")
         delegate?.filterButtonTapped(filterSection: self.type ?? .category, filterType: type, active: active)
     }
 }
-
-//extension CellWithFilterSelection: ShowInAllCitiesCellDelegate {
-//    func tap() {
-//        delegate?.showInAllCitiesTap()
-//    }
-//}
-
-
-
-
-
-
-
-
 
 final class DynamicHeightCollectionView: UICollectionView {
     var neededSize: ((CGSize) -> Void)?

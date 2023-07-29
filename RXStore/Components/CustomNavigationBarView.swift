@@ -39,7 +39,7 @@ class CustomNavigationBarView: UIView {
         let label = UILabel()
 //        label.font = FontFamily.Montserrat.bold.font(size: 15)
         label.font = .systemFont15Bold
-        label.textColor = .white
+        label.textColor = .black
         return label
     }()
 

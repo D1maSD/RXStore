@@ -53,6 +53,7 @@ final class FilterChooseCell: UICollectionViewCell {
 
 extension FilterChooseCell: FilterCheckedButtonDelegate {
     func checkedButtonTap(checked: Bool) {
+        print("26 .\(buttonType)")
         delegate?.filterButtonTap(type: buttonType, active: checkedButton.checked)
     }
 }

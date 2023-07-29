@@ -50,7 +50,7 @@
 		A8AD548B2A7382F0005F8DFF /* FilterChooseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD548A2A7382F0005F8DFF /* FilterChooseCell.swift */; };
 		A8AD548D2A7396C8005F8DFF /* FilterChooseCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD548C2A7396C8005F8DFF /* FilterChooseCellConfigurator.swift */; };
 		A8AD548F2A73A362005F8DFF /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD548E2A73A362005F8DFF /* Fonts.swift */; };
-		A8B07EB82A73036B00CEE335 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B07EB72A73036B00CEE335 /* FilterCell.swift */; };
+		A8B07EB82A73036B00CEE335 /* CellWithFilterSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B07EB72A73036B00CEE335 /* CellWithFilterSelection.swift */; };
 		A8B07EBA2A73037D00CEE335 /* FilterCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B07EB92A73037D00CEE335 /* FilterCellConfigurator.swift */; };
 		A8B07EBC2A73099000CEE335 /* FilterCheckedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B07EBB2A73099000CEE335 /* FilterCheckedButton.swift */; };
 		A8B07EBE2A730DD900CEE335 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B07EBD2A730DD900CEE335 /* String+Extension.swift */; };
@@ -63,6 +63,12 @@
 /* Begin PBXFileReference section */
 		03220296756D8A199F907C48 /* Pods_RXStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RXStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E729F649CA5D989B00F8B3F /* Pods-RXStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RXStore.debug.xcconfig"; path = "Target Support Files/Pods-RXStore/Pods-RXStore.debug.xcconfig"; sourceTree = "<group>"; };
+		A801A8BA2A73D9F200FD44A3 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		A801A8BB2A73D9F200FD44A3 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
+		A801A8BC2A73D9F300FD44A3 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		A801A8BD2A73D9F300FD44A3 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		A801A8BE2A73D9F400FD44A3 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		A801A8BF2A73D9F400FD44A3 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
 		A81414A12A72F0D700ECBB6D /* FilterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCoordinator.swift; sourceTree = "<group>"; };
 		A81414A32A72F0E900ECBB6D /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		A81414A52A72F0FB00ECBB6D /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
@@ -107,7 +113,7 @@
 		A8AD548A2A7382F0005F8DFF /* FilterChooseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterChooseCell.swift; sourceTree = "<group>"; };
 		A8AD548C2A7396C8005F8DFF /* FilterChooseCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterChooseCellConfigurator.swift; sourceTree = "<group>"; };
 		A8AD548E2A73A362005F8DFF /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
-		A8B07EB72A73036B00CEE335 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
+		A8B07EB72A73036B00CEE335 /* CellWithFilterSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithFilterSelection.swift; sourceTree = "<group>"; };
 		A8B07EB92A73037D00CEE335 /* FilterCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCellConfigurator.swift; sourceTree = "<group>"; };
 		A8B07EBB2A73099000CEE335 /* FilterCheckedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCheckedButton.swift; sourceTree = "<group>"; };
 		A8B07EBD2A730DD900CEE335 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -145,6 +151,19 @@
 				E3E5079CA4B01052E6E96568 /* Pods-RXStore.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A801A8B92A73D9E000FD44A3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A801A8BF2A73D9F400FD44A3 /* Montserrat-Black.ttf */,
+				A801A8BC2A73D9F300FD44A3 /* Montserrat-Bold.ttf */,
+				A801A8BB2A73D9F200FD44A3 /* Montserrat-ExtraBold.ttf */,
+				A801A8BE2A73D9F400FD44A3 /* Montserrat-Medium.ttf */,
+				A801A8BA2A73D9F200FD44A3 /* Montserrat-Regular.ttf */,
+				A801A8BD2A73D9F300FD44A3 /* Montserrat-SemiBold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		A81414A02A72F0A100ECBB6D /* FilterModule */ = {
@@ -247,6 +266,7 @@
 		A8878A582A683144003E8433 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A801A8B92A73D9E000FD44A3 /* Fonts */,
 				A8878A592A68317A003E8433 /* CardButtons.swift */,
 				A8878A5D2A683CA9003E8433 /* PageControlView.swift */,
 				A8878A5F2A683FE4003E8433 /* PageControlLabel.swift */,
@@ -343,7 +363,7 @@
 		A8B07EB62A73034B00CEE335 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
-				A8B07EB72A73036B00CEE335 /* FilterCell.swift */,
+				A8B07EB72A73036B00CEE335 /* CellWithFilterSelection.swift */,
 				A8B07EB92A73037D00CEE335 /* FilterCellConfigurator.swift */,
 				A8AD548A2A7382F0005F8DFF /* FilterChooseCell.swift */,
 				A8AD548C2A7396C8005F8DFF /* FilterChooseCellConfigurator.swift */,
@@ -503,7 +523,7 @@
 				A8878A642A694700003E8433 /* StoreCoordinator.swift in Sources */,
 				A8C1898B2A6A7FF6002149EE /* ViewController.swift in Sources */,
 				A81414A62A72F0FB00ECBB6D /* FilterViewModel.swift in Sources */,
-				A8B07EB82A73036B00CEE335 /* FilterCell.swift in Sources */,
+				A8B07EB82A73036B00CEE335 /* CellWithFilterSelection.swift in Sources */,
 				A8B07EBA2A73037D00CEE335 /* FilterCellConfigurator.swift in Sources */,
 				A8C1898F2A6A8AD7002149EE /* UIFont+Extensions.swift in Sources */,
 				A81414A42A72F0E900ECBB6D /* FilterViewController.swift in Sources */,

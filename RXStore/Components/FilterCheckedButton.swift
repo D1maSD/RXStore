@@ -19,11 +19,11 @@ enum FilterCheckedButtonType: CaseIterable {
     var title: String {
         switch self {
         case .first:
-            return "Синий"
+            return "Джинсы"
         case .second:
-            return "Голубой"
+            return "Футболки"
         case .third:
-            return "Темно-синий"
+            return "Платье"
         case .four:
             return "Красный"
         case .five:
@@ -61,26 +61,28 @@ final class FilterCheckedButton: UIButton {
             layer.borderWidth = 0
         case false:
             backgroundColor = .clear
-            setTitleColor(.yellow, for: .normal)
+            setTitleColor(.lightGray, for: .normal)
             layer.borderWidth = 1
-            layer.borderColor = UIColor.yellow.cgColor
+            layer.borderColor = UIColor.lightGray.cgColor
         }
         delegate?.checkedButtonTap(checked: checked)
     }
 
     func configure(type: FilterCheckedButtonType) {
+        print("12 .configure()")
         self.type = type
         setTitle(type.title, for: .normal)
         titleLabel?.font = .systemFont15Bold
         layer.cornerRadius = 22
-        setTitleColor(.yellow, for: .normal)
+        setTitleColor(.lightGray, for: .normal)
         backgroundColor = .clear
         layer.borderWidth = 1
-        layer.borderColor = UIColor.yellow.cgColor
+        layer.borderColor = UIColor.lightGray.cgColor
         self.addTarget(self, action: #selector(tap), for: .touchUpInside)
     }
 
     @objc private func tap() {
+        print("12 .tap()")
         updateState(isChecked: !checked)
     }
 }
@@ -103,12 +105,12 @@ extension FilterCheckedButtonType {
         }
     }
 
-    public enum CategoriesType: Int {
-        case first = 1
-        case second = 2
-        case third = 3
-        case four = 4
-        case five = 5
+    public enum CategoriesType: String {
+        case first = "jeans"
+        case second = "T-shirt"
+        case third = "Gu4T2fxnPDUoyM1JT4nd"
+        case four = "4"
+        case five = "5"
     }
     
     func toCategoriesType() -> CategoriesType? {

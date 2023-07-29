@@ -73,10 +73,12 @@ final class CardActionView: UIView {
     }
 
     @objc private func reloadButtonTap() {
+//        print("reloadButtonTap()")
         delegate?.reloadButtonTap()
     }
 
     @objc private func filterButtonTap() {
+//        print("filterButtonTap()")
         delegate?.filterButtonTap()
     }
 }
