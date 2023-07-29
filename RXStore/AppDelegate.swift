@@ -13,7 +13,6 @@ import FirebaseFirestore
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var storeCoordinator = StoreCoordinator()
     var mockCoordinator = MockCoordinator()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

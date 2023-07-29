@@ -21,18 +21,14 @@
 		A865F38C2A6E6CCD00FBE317 /* BrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A865F38B2A6E6CCD00FBE317 /* BrandCell.swift */; };
 		A865F38E2A6E707E00FBE317 /* AboutItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A865F38D2A6E707E00FBE317 /* AboutItemCell.swift */; };
 		A8782AB12A6681D6006594C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8782AB02A6681D6006594C3 /* AppDelegate.swift */; };
-		A8782AB52A6681D6006594C3 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8782AB42A6681D6006594C3 /* StoreViewController.swift */; };
 		A8782ABA2A6681DC006594C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8782AB92A6681DC006594C3 /* Assets.xcassets */; };
 		A8782ABD2A6681DC006594C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8782ABB2A6681DC006594C3 /* LaunchScreen.storyboard */; };
-		A8782AC62A668281006594C3 /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8782AC52A668281006594C3 /* StoreViewModel.swift */; };
-		A8782AC82A6682A0006594C3 /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8782AC72A6682A0006594C3 /* StoreModel.swift */; };
 		A8782ACA2A669004006594C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8782AC92A669004006594C3 /* GoogleService-Info.plist */; };
 		A8878A5A2A68317A003E8433 /* CardButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8878A592A68317A003E8433 /* CardButtons.swift */; };
 		A8878A5C2A683BDE003E8433 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8878A5B2A683BDE003E8433 /* UILabel + Extensions.swift */; };
 		A8878A5E2A683CA9003E8433 /* PageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8878A5D2A683CA9003E8433 /* PageControlView.swift */; };
 		A8878A602A683FE4003E8433 /* PageControlLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8878A5F2A683FE4003E8433 /* PageControlLabel.swift */; };
 		A8878A622A693C2A003E8433 /* CardActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8878A612A693C2A003E8433 /* CardActionView.swift */; };
-		A8878A642A694700003E8433 /* StoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8878A632A694700003E8433 /* StoreCoordinator.swift */; };
 		A8878A672A696587003E8433 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8878A662A696587003E8433 /* Coordinator.swift */; };
 		A8878A6A2A696EAC003E8433 /* ReloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8878A692A696EAC003E8433 /* ReloadButton.swift */; };
 		A8926DC62A66CF31000E10D8 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8926DC52A66CF31000E10D8 /* UIScrollView+Extension.swift */; };
@@ -81,19 +77,15 @@
 		A865F38D2A6E707E00FBE317 /* AboutItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutItemCell.swift; sourceTree = "<group>"; };
 		A8782AAD2A6681D6006594C3 /* RXStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RXStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8782AB02A6681D6006594C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A8782AB42A6681D6006594C3 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		A8782AB92A6681DC006594C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8782ABC2A6681DC006594C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A8782ABE2A6681DC006594C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A8782AC52A668281006594C3 /* StoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewModel.swift; sourceTree = "<group>"; };
-		A8782AC72A6682A0006594C3 /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
 		A8782AC92A669004006594C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A8878A592A68317A003E8433 /* CardButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardButtons.swift; sourceTree = "<group>"; };
 		A8878A5B2A683BDE003E8433 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		A8878A5D2A683CA9003E8433 /* PageControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControlView.swift; sourceTree = "<group>"; };
 		A8878A5F2A683FE4003E8433 /* PageControlLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControlLabel.swift; sourceTree = "<group>"; };
 		A8878A612A693C2A003E8433 /* CardActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardActionView.swift; sourceTree = "<group>"; };
-		A8878A632A694700003E8433 /* StoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCoordinator.swift; sourceTree = "<group>"; };
 		A8878A662A696587003E8433 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		A8878A692A696EAC003E8433 /* ReloadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadButton.swift; sourceTree = "<group>"; };
 		A8926DC52A66CF31000E10D8 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
@@ -241,10 +233,6 @@
 		A8782AC42A6681EE006594C3 /* StoreModule */ = {
 			isa = PBXGroup;
 			children = (
-				A8878A632A694700003E8433 /* StoreCoordinator.swift */,
-				A8782AB42A6681D6006594C3 /* StoreViewController.swift */,
-				A8782AC52A668281006594C3 /* StoreViewModel.swift */,
-				A8782AC72A6682A0006594C3 /* StoreModel.swift */,
 			);
 			path = StoreModule;
 			sourceTree = "<group>";
@@ -481,7 +469,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8926DC82A66D187000E10D8 /* UIView+Extensions.swift in Sources */,
-				A8782AC62A668281006594C3 /* StoreViewModel.swift in Sources */,
 				A865F37A2A6DC19700FBE317 /* TableViewFactory.swift in Sources */,
 				A865F37F2A6DC3E400FBE317 /* MockViewController.swift in Sources */,
 				A814462B2A6FDD7200F802D7 /* FirestoreManager.swift in Sources */,
@@ -490,7 +477,6 @@
 				A8926DC62A66CF31000E10D8 /* UIScrollView+Extension.swift in Sources */,
 				A8C1898D2A6A848E002149EE /* CustomNavigationBarView.swift in Sources */,
 				A8878A5E2A683CA9003E8433 /* PageControlView.swift in Sources */,
-				A8782AB52A6681D6006594C3 /* StoreViewController.swift in Sources */,
 				A8C5257D2A6E90A5002BA2CA /* UITableView + Extensions.swift in Sources */,
 				A89E37782A6A787600D73318 /* CustomNavigationController.swift in Sources */,
 				A8AD54892A7351C0005F8DFF /* CustomButtonState.swift in Sources */,
@@ -510,9 +496,7 @@
 				A89BB0372A716B3600FCE3E0 /* BrandCellConfigurator.swift in Sources */,
 				A8878A5C2A683BDE003E8433 /* UILabel + Extensions.swift in Sources */,
 				A8878A6A2A696EAC003E8433 /* ReloadButton.swift in Sources */,
-				A8782AC82A6682A0006594C3 /* StoreModel.swift in Sources */,
 				A89BB0332A716AD600FCE3E0 /* AboutItemCellConfigurator.swift in Sources */,
-				A8878A642A694700003E8433 /* StoreCoordinator.swift in Sources */,
 				A8C1898B2A6A7FF6002149EE /* ViewController.swift in Sources */,
 				A81414A62A72F0FB00ECBB6D /* FilterViewModel.swift in Sources */,
 				A8B07EB82A73036B00CEE335 /* CellWithFilterSelection.swift in Sources */,

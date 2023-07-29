@@ -25,10 +25,11 @@ class ViewController: UIViewController {
     }
     
     private func setupHeader() {
-
     }
     
-    func setup() {}
+    func setup() {
+        self.view.backgroundColor = .systemGray
+    }
     
     func setupLayout() {}
     

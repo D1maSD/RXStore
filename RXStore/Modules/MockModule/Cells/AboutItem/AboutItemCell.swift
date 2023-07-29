@@ -12,13 +12,11 @@ final class AboutItemCell: UITableViewCell {
     
     private lazy var aboutProduct: UILabel = {
         let priceLabel = UILabel()
-        priceLabel.text = "О товаре"
         priceLabel.font = .systemFont20Bold
         return priceLabel
     }()
     private lazy var descriptionProductLabel: UILabel = {
         let priceLabel = UILabel()
-        priceLabel.text = "Функциональный и удобный фен BS-7799 отличается красивым дизайном и доступной ценой с большим набором функций. Отличается высоким качеством и надежностью, бережно сушит волосы. Это мощный и универсальный инструмент, с помощью которого можно не только высушить, но и аккуратно уложить ваши волосы."
         priceLabel.textColor = .gray
         priceLabel.numberOfLines = 10
         priceLabel.font = .systemFont16Medium
@@ -43,6 +41,7 @@ final class AboutItemCell: UITableViewCell {
             $0.top.equalTo(self.aboutProduct.snp.bottom).offset(20)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
+            $0.bottom.equalToSuperview()
         }
     }
     
