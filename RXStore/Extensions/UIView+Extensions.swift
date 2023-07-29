@@ -54,14 +54,14 @@ extension UIView {
         return Bundle.main.loadNibNamed(String(describing: T.self),
                                         owner: nil,
                                         options: nil)?
-            .first as! T // swiftlint:disable:this force_cast
+            .first as! T
     }
 
     func connectNibUI() -> Any? {
         let nibView = Bundle.main.loadNibNamed(String(describing: type(of: self)),
                                                owner: nil,
                                                options: nil)?
-            .first as! UIView // swiftlint:disable:this force_cast
+            .first as! UIView 
         nibView.frame = frame
         self.addSubview(nibView)
         return nibView

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-//import UseCases
 
 protocol FilterViewModelProtocol {
     var routes: ((FilterRoutes) -> Void)? { get set }
@@ -57,10 +56,8 @@ final class FilterViewModel: FilterViewModelProtocol {
                 if let categoryFilter = filterType.toCategoriesType() {
                     filteredModel.append(categoryFilter.rawValue)
                     print("26 .filteredModel \(filteredModel)")
-                    //NOTE: Добавил rawValue of selected object
                 }
             } else {
-                //NOTE: Delete from array if button is deselected
                 filteredModel.removeAll()
             }
         }

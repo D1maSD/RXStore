@@ -154,7 +154,7 @@ final class BrandCell: UITableViewCell {
         self.rateLabel.text = "\(rateLabel)"
         self.ratesLabel.text = "\(ratesLabel) оценок"
         self.articleLabel.text = "Арт: \(articleLabel)"
-        self.numberOfSalesLabel.text = "Купили более \(numberOfSalesLabel) раз" //numberOfSalesLabel
+        self.numberOfSalesLabel.text = "Купили более \(numberOfSalesLabel) раз" 
     }
     
     required init?(coder: NSCoder) {

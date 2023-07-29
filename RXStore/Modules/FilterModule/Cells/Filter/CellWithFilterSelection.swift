@@ -20,7 +20,7 @@ enum CellWithFilterSelectionType {
     var buttonTypes: [FilterCheckedButtonType] {
         switch self {
         case .category:
-            return [.tshorts, .third, .four, .five, .jeans]
+            return [.tshorts, .third, .jackets, .blouse, .jeans]
         }
     }
 }

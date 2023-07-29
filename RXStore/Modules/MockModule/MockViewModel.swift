@@ -12,15 +12,12 @@ import RxSwift
 protocol MockViewModelProtocol: CardActionViewDelegate {
     func numberOfRowsInSection() -> Int
     var delegate: MockViewModelDelegate? { get set }
-//    func loadData(categoryTitle: String, completion: @escaping ([ProductPage]) -> Void)
     func loadData(categoryTitle: String) -> Observable<[ProductPage]>
     var sweetArray: [ProductPage] { get }
     var routes: ((MockRoutes) -> Void)? { get set }
 }
 
 protocol MockViewModelDelegate: AnyObject {
-    //    func loadingAnimation(start: Bool)
-    //    func emptyPlugView(show: Bool)
 }
 
 enum MockRoutes {

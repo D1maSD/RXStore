@@ -47,7 +47,6 @@ final class MockCoordinator: Coordinator {
         }
     }
     
-    
     private func bindMockViewModel(viewModel: MockViewModel) {
         viewModel.routes = { [weak self] routes in
             switch routes {

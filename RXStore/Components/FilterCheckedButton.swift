@@ -12,8 +12,8 @@ enum FilterCheckedButtonType: CaseIterable {
     case jeans
     case tshorts
     case third
-    case four
-    case five
+    case jackets
+    case blouse
 
     var title: String {
         switch self {
@@ -23,10 +23,10 @@ enum FilterCheckedButtonType: CaseIterable {
             return "Футболки"
         case .third:
             return "Платье"
-        case .four:
-            return "Красный"
-        case .five:
-            return "Зеленый"
+        case .jackets:
+            return "Жакеты"
+        case .blouse:
+            return "Блузки"
         }
     }
 }
@@ -39,7 +39,7 @@ final class FilterCheckedButton: UIButton {
 
     weak var delegate: FilterCheckedButtonDelegate?
     private(set) var checked = false
-    private var type: FilterCheckedButtonType = .four
+    private var type: FilterCheckedButtonType = .jackets
 
     init(delegate: FilterCheckedButtonDelegate) {
         self.delegate = delegate
@@ -95,9 +95,9 @@ extension FilterCheckedButtonType {
         case .third:
             self = .third
         case .four:
-            self = .four
+            self = .jackets
         case .five:
-            self = .five
+            self = .blouse
         }
     }
 
@@ -105,8 +105,8 @@ extension FilterCheckedButtonType {
         case first = "jeans"
         case second = "T-shirt"
         case third = "Gu4T2fxnPDUoyM1JT4nd"
-        case four = "4"
-        case five = "5"
+        case four = "jacket"
+        case five = "blouse"
     }
     
     func toCategoriesType() -> CategoriesType? {
@@ -117,9 +117,9 @@ extension FilterCheckedButtonType {
             return .second
         case .third:
             return .third
-        case .four:
+        case .jackets:
             return .four
-        case .five:
+        case .blouse:
             return .five
         default:
             return nil

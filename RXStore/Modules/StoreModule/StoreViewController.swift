@@ -182,7 +182,6 @@ class StoreViewController: ViewController {
         star.image = UIImage(named: "star")
         return star
     }()
-//    UIImage(named: "star")
     private lazy var descriptionLabel: UILabel = {
         let priceLabel = UILabel()
         priceLabel.text = "Фен для волос с насадками с диффузаром"
@@ -252,7 +251,6 @@ class StoreViewController: ViewController {
         let button = CardButton(
             frame: .zero,
             label: "Похожие",
-            //NOTE: Здесь картинку поиска
             icon: UIImage(),
             cornerRadius: 10
         )
@@ -264,7 +262,6 @@ class StoreViewController: ViewController {
         let button = CardButton(
             frame: .zero,
             label: "RUB",
-            //NOTE: Здесь картинку страны
             icon: UIImage(),
             cornerRadius: 5
         )
@@ -285,12 +282,8 @@ class StoreViewController: ViewController {
     
     var photoCards: UIView = UIView()
     
-//    var filterButton = UIButton()
-//    var likeButton = UIButton()
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         setupConstraints()
         setupCardActionView()
         
@@ -326,8 +319,6 @@ class StoreViewController: ViewController {
         pageControl.snp.makeConstraints {
             $0.centerX.equalTo(self.imageScrollView.snp.centerX)
             $0.bottom.equalTo(self.imageScrollView.snp.bottom).offset(-12)
-//            $0.left.equalTo(self.imageScrollView.snp.left)
-//            $0.right.equalTo(self.imageScrollView.snp.right)
             $0.height.equalTo(50)
             $0.width.equalTo(100)
         }
@@ -336,7 +327,6 @@ class StoreViewController: ViewController {
             $0.centerY.equalTo(self.pageControl.snp.centerY)
             $0.bottom.equalTo(self.imageScrollView.snp.bottom).offset(-12)
             $0.left.equalTo(self.imageScrollView.snp.left).offset(20)
-//            $0.right.equalTo(self.imageScrollView.snp.right)
             $0.height.equalTo(30)
             $0.width.equalTo(60)
         }
@@ -345,14 +335,12 @@ class StoreViewController: ViewController {
             $0.top.equalToSuperview().offset(20)
             $0.left.equalToSuperview().offset(20)
             $0.height.equalTo(30)
-//            $0.width.equalTo(70)
         }
         
         oldPriceLabel.snp.makeConstraints {
             $0.bottom.equalTo(self.priceLabel.snp.bottom)
             $0.left.equalTo(self.priceLabel.snp.right).offset(20)
             $0.height.equalTo(30)
-//            $0.width.equalTo(70)
         }
         
         verticalView.snp.makeConstraints {
@@ -360,25 +348,20 @@ class StoreViewController: ViewController {
             $0.left.equalTo(self.oldPriceLabel.snp.left)
             $0.right.equalTo(self.oldPriceLabel.snp.right)
             $0.height.equalTo(1)
-//            $0.width.equalTo(70)
         }
         
         colorLabel.snp.makeConstraints {
             $0.top.equalTo(self.priceLabel.snp.bottom).offset(5)
             $0.left.equalToSuperview().offset(20)
             $0.height.equalTo(30)
-//            $0.width.equalTo(70)
         }
         colorDescriptionLabel.snp.makeConstraints {
             $0.centerY.equalTo(self.colorLabel.snp.centerY)
-//            $0.top.equalTo(self.priceLabel.snp.bottom).offset(20)
             $0.left.equalTo(self.colorLabel.snp.right).offset(20)
             $0.height.equalTo(30)
-//            $0.width.equalTo(70)
         }
         
         imageOfItem.snp.makeConstraints {
-//            $0.centerY.equalTo(self.colorLabel.snp.centerY)
             $0.top.equalTo(self.colorLabel.snp.bottom).offset(20)
             $0.left.equalToSuperview().offset(20)
             $0.height.equalTo(70)
@@ -396,24 +379,19 @@ class StoreViewController: ViewController {
             $0.top.equalTo(self.separatorlView.snp.bottom).offset(20)
             $0.left.equalToSuperview().offset(20)
             $0.height.equalTo(30)
-//            $0.width.equalTo(70)
         }
         
         descriptionLabel.snp.makeConstraints {
             $0.top.equalTo(self.brandLabel.snp.bottom)
-//            $0.top.equalTo(self.priceLabel.snp.bottom).offset(20)
             $0.left.equalToSuperview().offset(20)
             $0.height.equalTo(30)
-//            $0.width.equalTo(70)
         }
-//        star
+
         rightChevron.snp.makeConstraints {
-//            $0.top.equalTo(self.separatorlView.snp.bottom).offset(20)
             $0.left.equalTo((self.brandLabel.snp.right)).offset(20)
             $0.height.equalTo(15)
             $0.width.equalTo(7)
             $0.centerY.equalTo(self.brandLabel.snp.centerY)
-//            $0.width.equalTo(70)
         }
         star.snp.makeConstraints {
             $0.top.equalTo(self.descriptionLabel.snp.bottom).offset(20)
@@ -421,20 +399,15 @@ class StoreViewController: ViewController {
             $0.height.equalTo(14)
             $0.width.equalTo(14)
         }
-//        rateLabel
+
         rateLabel.snp.makeConstraints {
             $0.bottom.equalTo(self.star.snp.bottom)
             $0.left.equalTo(self.star.snp.right).offset(3)
-//            $0.centerY.equalTo(self.brandLabel.snp.centerY)
-//            $0.width.equalTo(70)
         }
-//        
+
         ratesLabel.snp.makeConstraints {
             $0.top.equalTo(self.rateLabel.snp.top)
             $0.left.equalTo(self.rateLabel.snp.right).offset(20)
-            
-//            $0.centerY.equalTo(self.brandLabel.snp.centerY)
-//            $0.width.equalTo(70)
         }
         
         verticalViewRate.snp.makeConstraints {
@@ -448,8 +421,6 @@ class StoreViewController: ViewController {
             $0.top.equalTo(self.rateLabel.snp.top)
             $0.left.equalTo(self.ratesLabel.snp.right).offset(10)
             $0.centerY.equalTo(self.rateLabel.snp.centerY)
-//            $0.centerY.equalTo(self.brandLabel.snp.centerY)
-//            $0.width.equalTo(70)
         }
         
         numberOfSalesLabel.snp.makeConstraints {
@@ -465,18 +436,13 @@ class StoreViewController: ViewController {
         }
         aboutProduct.snp.makeConstraints {
             $0.top.equalTo(self.separatorlViewTwo.snp.bottom).offset(20)
-//            $0.top.equalTo(self.priceLabel.snp.bottom).offset(20)
             $0.left.equalToSuperview().offset(20)
             $0.height.equalTo(30)
-//            $0.width.equalTo(70)
         }
         descriptionProductLabel.snp.makeConstraints {
             $0.top.equalTo(self.aboutProduct.snp.bottom).offset(20)
-//            $0.top.equalTo(self.priceLabel.snp.bottom).offset(20)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
-//            $0.height.equalTo(30)
-//            $0.width.equalTo(70)
         }
     }
 }
