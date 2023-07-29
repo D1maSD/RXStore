@@ -19,7 +19,7 @@ protocol FilterListManagerDelegate: AnyObject {
 enum FilterSectionTypes {
     case chooseColor
 }
-//, FilterListManagerDelegate
+
 final class FilterViewController: ViewController {
 
     private var section: [FilterSectionTypes] = [.chooseColor]
@@ -31,13 +31,8 @@ final class FilterViewController: ViewController {
 
     init(viewModel: FilterViewModelProtocol) {
         self.viewModel = viewModel
-//        super.init(addToTopOffset: 44)
-//        listManager.delegate = self
         super.init(nibName: nil, bundle: nil)
-//        applyButtonView.delegate = self.viewModel
         applyButtonView.delegate = self
-
-        
     }
 
     @available(*, unavailable)
@@ -67,14 +62,14 @@ final class FilterViewController: ViewController {
 
     private func setupTableView() {
         
-//        tableView.register(cellType: CellWithFilterSelection.self)
         tableView.register(CellWithFilterSelection.self, forCellReuseIdentifier: "\(CellWithFilterSelection.self)")
 
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isUserInteractionEnabled = true
-//        listManager?.attach(tableView)
+        
+        view.backgroundColor = .white
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -100,13 +95,8 @@ final class FilterViewController: ViewController {
         switch sectionType {
         case .category:
             categoryCellConfigurator.activateFilterButtons(buttons: buttonTypes)
-        case .gender:
-            print("gendrCellConfigurator.activateFilterButtons(buttons: buttonTypes)")
-        case .age:
-            print("ageCellConfigurator.activateFilterButtons(buttons: buttonTypes)")
         }
     }
-
 
     private func updateButtonsStates() {
         let viewChanges = viewModel.viewChangesToTheFilterModel()
@@ -129,7 +119,6 @@ final class FilterViewController: ViewController {
     }
     
     func filterButtonTap(filterSection: CellWithFilterSelectionType, filterType: FilterCheckedButtonType, active: Bool) {
-        print("26 .\(filterType) active: \(active)")
         
         viewModel.recordFilterButtonTap(filterSection: filterSection, filterType: filterType, active: active)
         updateButtonsStates()
@@ -137,19 +126,8 @@ final class FilterViewController: ViewController {
     }
 }
 
-//extension FilterViewController: FilterListManagerDelegate {
-//
-//    func filterButtonTap(filterSection: CellWithFilterSelectionType, filterType: FilterCheckedButtonType, active: Bool) {
-//        viewModel.recordFilterButtonTap(filterSection: filterSection, filterType: filterType, active: active)
-//        updateButtonsStates()
-//        updateCheckedFilters()
-//    }
-//}
-
-
 extension FilterViewController: ApplyFilterButtonViewDelegate {
     func buttonTap() {
-        print("24 .applyButtonTap")
         viewModel.applyButtonTap()
     }
 }
@@ -180,7 +158,6 @@ extension FilterViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch section[indexPath.section] {
         case .chooseColor:
-//            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: CellWithFilterSelection.self)
             let cell: CellWithFilterSelection = tableView.dequeueReusableCell(for: indexPath)
             categoryCellConfigurator.setupCell(cell)
             cell.delegate = self
@@ -190,12 +167,8 @@ extension FilterViewController: UITableViewDataSource {
 }
 
 extension FilterViewController: CellWithFilterSelectionDelegate {
-    func showInAllCitiesTap() {
-//        delegate?.showInAllCitiesTap()
-    }
-
+    
     func filterButtonTapped(filterSection: CellWithFilterSelectionType, filterType: FilterCheckedButtonType, active: Bool) {
-        print("12 .filterButtonTapped")
         filterButtonTap(filterSection: filterSection, filterType: filterType, active: active)
     }
 }

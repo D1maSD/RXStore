@@ -45,7 +45,6 @@ final class CardActionView: UIView {
     }
 
     private func configure() {
-//        reloadButton.addTarget(self, action: #selector(reloadButtonTap), for: .touchUpInside)
         filterButton.addTarget(self, action: #selector(filterButtonTap), for: .touchUpInside)
     }
 
@@ -73,12 +72,10 @@ final class CardActionView: UIView {
     }
 
     @objc private func reloadButtonTap() {
-//        print("reloadButtonTap()")
         delegate?.reloadButtonTap()
     }
 
     @objc private func filterButtonTap() {
-//        print("filterButtonTap()")
         delegate?.filterButtonTap()
     }
 }

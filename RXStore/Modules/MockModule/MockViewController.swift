@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import RxSwift
 
 
 class MockViewController: ViewController {
@@ -19,9 +20,10 @@ class MockViewController: ViewController {
     }()
     private let tableView = TableViewFactory.make()
     private let firestoreManager = FirestoreManager()
-    var sweetArray = [ProductPage]()
+    private var sweetArray = [ProductPage]()
     private var viewModel: MockViewModelProtocol
     private lazy var cardActionView = CardActionView(delegate: viewModel)
+    private let disposeBag = DisposeBag()
     
     private var aboutItemCellConfigurator: AboutItemCellConfigurator?
     private var brandCellConfigurator: BrandCellConfigurator?
@@ -30,11 +32,9 @@ class MockViewController: ViewController {
     
     init(viewModel: MockViewModelProtocol) {
         self.viewModel = viewModel
-//        self.viewModel.loadData()
         self.sweetArray = self.viewModel.sweetArray
         super.init(nibName: nil, bundle: nil)
         self.viewModel.delegate = self
-        print("24 .\(self.sweetArray)")
     }
     
     required init?(coder: NSCoder) {
@@ -43,49 +43,22 @@ class MockViewController: ViewController {
     
     private lazy var currentPositionLabel = UILabel(text: "", color: .white)
     
-        
-    var images = [UIImage?]() {
-        didSet {
-            print(images.count)
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-//        setupConstraints()
         setupCardActionView()
-//        loadData()
         setupTableView()
-//        "T-shirt"
-        
-//                basket-10.wb.ru/vol1433/part143394/143394105/images/c246x328/1.jpg
-//                basket-10.wb.ru/vol1379/part137993/137993017/images/c246x328/1.jpg
-//                basket-10.wb.ru/vol1376/part137640/137640238/images/c516x688/1.jpg
-//                basket-11.wb.ru/vol1628/part162888/162888869/images/c516x688/1.jpg
-//                basket-04.wb.ru/vol586/part58636/58636981/images/big/7.jpg
-//                basket-04.wb.ru/vol586/part58636/58636981/images/c246x328/8.jpg
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
         cardActionView.startLoadingAnimation()
-//        loadData()
-        
+        loadData()
     }
     
-    func saveNewFilters(filters: Filters) {
-
-    }
-    
-    //NOTE: here arrray mapped
     func saveNewFiltersArray(filters: [String]) {
         let data = filters[0]
-        print("27 .data \(data)")
         loadData(categoryTitle: data)
-//        viewModel.saveNewFilters(filters: filters)
-//        viewModel.getCards(withPaging: false)
     }
 }
 
@@ -102,7 +75,6 @@ extension MockViewController: UIScrollViewDelegate {
         view.addSubview(cardActionView)
         cardActionView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(30)
-//            make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(50)
         }
@@ -152,10 +124,7 @@ extension MockViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension MockViewController {
-    func setupConstraints() {
-        
-    }
-    //  https://
+    
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -168,7 +137,6 @@ extension MockViewController {
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints {
-            //            $0.top.equalTo(self.view.snp.top)
             $0.top.equalTo(self.cardActionView.snp.bottom)
             $0.bottom.equalTo(self.view.snp.bottom)
             $0.left.equalTo(self.view.snp.left)
@@ -176,39 +144,30 @@ extension MockViewController {
         }
     }
     
-    func loadData(categoryTitle: String = "") {
-        self.viewModel.loadData(categoryTitle: categoryTitle) { [weak self] response in
-            guard let self = self else { return }
-//            print("print(22 .\(response))")
-            let item = response[0]
-            self.aboutItemCellConfigurator = AboutItemCellConfigurator(aboutProduct: "О товаре", descriptionProductLabel: item.detailedDescriptionOfProduct)
-            
-            self.brandCellConfigurator = BrandCellConfigurator(
-                brandLabel: item.brandName,
-                descriptionLabel: item.descriptionOfProduct,
-                rateLabel: item.rate,
-                ratesLabel: item.allRates,
-                articleLabel: item.articleNumber,
-                numberOfSalesLabel: item.numberOfPurchases
-            )
-            self.priceOfItemCellConfigurator = PriceOfItemCellConfigurator(
-                priceLabel: item.price,
-                oldPriceLabel: item.oldPrice,
-                colorLabel: "Black",
-                colorDescriptionLabel: item.color, url: item.otherColors
-            )
-            self.imageOfItemCellConfigurator = ImageOfItemCellConfigurator(imagesOfProduct: [UIImageView](), url: item.productPhotos)
-            self.tableView.reloadData()
-        }
-        self.tableView.reloadData()
-    }
-}
-extension MockViewController: CardActionViewDelegate {
-    func reloadButtonTap() {
-//        print("reloadButtonTap()")
-    }
-    
-    func filterButtonTap() {
-//        print("filterButtonTap()")
+    private func loadData(categoryTitle: String = "") {
+        self.viewModel.loadData(categoryTitle: categoryTitle)
+            .subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                let item = response[0]
+                self.aboutItemCellConfigurator = AboutItemCellConfigurator(aboutProduct: "О товаре", descriptionProductLabel: item.detailedDescriptionOfProduct)
+                
+                self.brandCellConfigurator = BrandCellConfigurator(
+                    brandLabel: item.brandName,
+                    descriptionLabel: item.descriptionOfProduct,
+                    rateLabel: item.rate,
+                    ratesLabel: item.allRates,
+                    articleLabel: item.articleNumber,
+                    numberOfSalesLabel: item.numberOfPurchases
+                )
+                self.priceOfItemCellConfigurator = PriceOfItemCellConfigurator(
+                    priceLabel: item.price,
+                    oldPriceLabel: item.oldPrice,
+                    colorLabel: "",
+                    colorDescriptionLabel: item.color, url: item.otherColors
+                )
+                self.imageOfItemCellConfigurator = ImageOfItemCellConfigurator(imagesOfProduct: [UIImageView](), url: item.productPhotos)
+                self.tableView.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
 }

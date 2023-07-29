@@ -14,11 +14,7 @@ final class PageControlView: UIPageControl {
     
     public init(frame: CGRect, label: String, icon: UIImage, cornerRadius: CGFloat) {
         super.init(frame: frame)
-        
         setupBackgroundView()
-//        self.setTitle(label, for: .normal)
-//        self.setImage(icon, for: .normal)
-//        self.layer.cornerRadius = cornerRadius
     }
     
     required init?(coder: NSCoder) {
@@ -28,19 +24,14 @@ final class PageControlView: UIPageControl {
     override func layoutSubviews() {
         super.layoutSubviews()
         setupBackgroundView()
-//        layer.masksToBounds = true
-//        layer.cornerRadius = 5
-//        backgroundView.frame = bounds
     }
     
     private func setupBackgroundView() {
-//        self.contetview
         backgroundView = UIView(frame: bounds)
-        backgroundView.backgroundColor = UIColor.blue
+        backgroundView.backgroundColor = .clear
         backgroundView.layer.cornerRadius = 5
         backgroundView.layer.masksToBounds = true
         self.addSubview(backgroundView)
-        // Make sure the background view is behind the page control
         self.sendSubviewToBack(backgroundView)
     }
 

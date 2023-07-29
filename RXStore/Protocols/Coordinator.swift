@@ -13,7 +13,6 @@ protocol Coordinator {
 
     // MARK: Required methods
 
-//    var routes: ((Routes) -> Void)? { get set }
     func start() -> UIViewController?
 
     // MARK: Optional methods

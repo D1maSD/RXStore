@@ -9,37 +9,24 @@ import UIKit
 
 enum CellWithFilterSelectionType {
     case category
-    case gender
-    case age
 
     var titleText: String {
         switch self {
         case .category:
             return "Категория"
-        case .gender:
-            return "Пол"
-        case .age:
-            return "Возраст"
         }
     }
 
     var buttonTypes: [FilterCheckedButtonType] {
         switch self {
         case .category:
-            return [.second, .third, .four, .five, .first]
-        case .gender:
-//            return [.female, .male]
-            return [.second, .third, .four, .five, .first]
-        case .age:
-//            return [.fromEighteen, .fromTwentySix, .fromThirtyOne, .fromFortyOne, .fromFiftyAndMore]
-            return [.second, .third, .four, .five, .first]
+            return [.tshorts, .third, .four, .five, .jeans]
         }
     }
 }
 
 protocol CellWithFilterSelectionDelegate: AnyObject {
     func filterButtonTapped(filterSection: CellWithFilterSelectionType, filterType: FilterCheckedButtonType, active: Bool)
-    func showInAllCitiesTap()
 }
 
 final class CellWithFilterSelection: UITableViewCell {
@@ -49,7 +36,6 @@ final class CellWithFilterSelection: UITableViewCell {
     private var cellSizes: [CGSize] = []
     private var configurators: [FilterChooseCellConfigurator] = []
     private var type: CellWithFilterSelectionType?
-//    private let allCitiesView = ShowAllCitiesView()
 
     private let collectionView = DynamicHeightCollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout.init())
 
@@ -88,13 +74,6 @@ final class CellWithFilterSelection: UITableViewCell {
         collectionView.layoutIfNeeded()
         collectionView.neededSize = { [ weak self] neededSize in
             self?.collectionView.snp.updateConstraints { update in
-                guard let self = self else { return }
-                // NOTE: It's a hotfix solution, at this case height is incorrect
-//                if (self.type == .category) && UIScreen.isWide {
-//                    update.height.equalTo(162)
-//                } else {
-//                    update.height.equalTo(neededSize.height)
-//                }
                 update.height.equalTo(162)
             }
         }
@@ -185,7 +164,6 @@ extension CellWithFilterSelection: UICollectionViewDelegate, UICollectionViewDel
 
 extension CellWithFilterSelection: FilterChooseCellDelegate {
     func filterButtonTap(type: FilterCheckedButtonType, active: Bool) {
-        print("12 .filterButtonTap")
         delegate?.filterButtonTapped(filterSection: self.type ?? .category, filterType: type, active: active)
     }
 }

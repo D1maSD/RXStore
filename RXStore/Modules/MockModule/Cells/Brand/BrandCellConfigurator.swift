@@ -33,15 +33,14 @@ final class BrandCellConfigurator: ListCellConfiguration {
     }
 
     func setupCell(_ cell: UIView) {
-//        guard let cell = cell as? BrandCell else { return }
         guard
             let cell = cell as? BrandCell,
-                let brandLabel = brandLabel,
-                let descriptionLabel = descriptionLabel,
-                let rateLabel = rateLabel,
-                let ratesLabel = ratesLabel,
-                let articleLabel = articleLabel,
-                let numberOfSalesLabel = numberOfSalesLabel else { return }
+            let brandLabel = brandLabel,
+            let descriptionLabel = descriptionLabel,
+            let rateLabel = rateLabel,
+            let ratesLabel = ratesLabel,
+            let articleLabel = articleLabel,
+            let numberOfSalesLabel = numberOfSalesLabel else { return }
         
         cell.setup(
             brandLabel: brandLabel,

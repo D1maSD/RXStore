@@ -12,5 +12,6 @@ target 'RXStore' do
 	pod 'FirebaseFirestore'
 	pod 'SnapKit', '~> 5.6.0'
 	pod 'SDWebImage'
+	pod 'RxSwift', '5.1.3'
 
 end

@@ -9,18 +9,17 @@ import UIKit
 
 enum FilterCheckedButtonType: CaseIterable {
 
-    case first
-    case second
+    case jeans
+    case tshorts
     case third
     case four
     case five
 
-
     var title: String {
         switch self {
-        case .first:
+        case .jeans:
             return "Джинсы"
-        case .second:
+        case .tshorts:
             return "Футболки"
         case .third:
             return "Платье"
@@ -69,7 +68,6 @@ final class FilterCheckedButton: UIButton {
     }
 
     func configure(type: FilterCheckedButtonType) {
-        print("12 .configure()")
         self.type = type
         setTitle(type.title, for: .normal)
         titleLabel?.font = .systemFont15Bold
@@ -82,20 +80,18 @@ final class FilterCheckedButton: UIButton {
     }
 
     @objc private func tap() {
-        print("12 .tap()")
         updateState(isChecked: !checked)
     }
 }
-
 
 extension FilterCheckedButtonType {
     
     init?(category: CategoriesType) {
         switch category {
         case .first:
-            self = .first
+            self = .jeans
         case .second:
-            self = .second
+            self = .tshorts
         case .third:
             self = .third
         case .four:
@@ -115,9 +111,9 @@ extension FilterCheckedButtonType {
     
     func toCategoriesType() -> CategoriesType? {
         switch self {
-        case .first:
+        case .jeans:
             return .first
-        case .second:
+        case .tshorts:
             return .second
         case .third:
             return .third
@@ -133,13 +129,10 @@ extension FilterCheckedButtonType {
 
 extension Filters {
     func isEmpty() -> Bool {
-//        guard let category = category else { return true }
-//        return category.isEmpty
         return true
     }
 
     mutating func clear() {
-//        category = []
     }
 }
 
@@ -148,14 +141,8 @@ public struct Filters: Equatable {
     public static func == (lhs: Filters, rhs: Filters) -> Bool {
         return true
     }
-    
-//    var category: [CategoriesType] = [CategoriesType]()
-
    
 
     public init(city: String, country: String, showAllCities: Bool) {
-//        self.city = city
-//        self.country = country
-//        self.showAllCities = showAllCities
     }
 }

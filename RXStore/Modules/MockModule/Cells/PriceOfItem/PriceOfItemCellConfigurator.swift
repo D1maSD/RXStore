@@ -28,9 +28,7 @@ final class PriceOfItemCellConfigurator: ListCellConfiguration {
         self.url = url
     }
     
-    func setupCell(_ cell: UIView) {
-        //        guard let cell = cell as? PriceOfItemCell else { return }
-        
+    func setupCell(_ cell: UIView) {        
         guard
             let cell = cell as? PriceOfItemCell,
             let priceLabel = priceLabel,

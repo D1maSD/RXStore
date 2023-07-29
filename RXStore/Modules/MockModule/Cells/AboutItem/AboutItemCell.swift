@@ -10,11 +10,6 @@ import UIKit
 
 final class AboutItemCell: UITableViewCell {
     
-//    private let restInfoContentView: UIView = {
-//        let view = UIView()
-//        view.heightAnchor.constraint(equalToConstant: 300).isActive = true
-//        return view
-//    }()
     private lazy var aboutProduct: UILabel = {
         let priceLabel = UILabel()
         priceLabel.text = "О товаре"

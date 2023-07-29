@@ -17,7 +17,6 @@ final class ImageOfItemCell: UITableViewCell, UIScrollViewDelegate {
     private var view4 = UIImageView()
     private var view5 = UIImageView()
     
-    
     private var isBeingOnCycle = false
     
     private lazy var imageScrollView: UIScrollView = {
@@ -42,7 +41,6 @@ final class ImageOfItemCell: UITableViewCell, UIScrollViewDelegate {
             icon: UIImage(),
             cornerRadius: 10)
         pageControl.numberOfPages = views.count
-        print("22 . \(pageControl.numberOfPages)")
         pageControl.currentPage = 0
         pageControl.addTarget(self, action: #selector(pageControlTapHandler(sender:)), for: .touchUpInside)
         return pageControl
@@ -78,14 +76,12 @@ final class ImageOfItemCell: UITableViewCell, UIScrollViewDelegate {
             $0.trailing.equalTo(contentView.snp.trailing)
             $0.height.equalTo(500)
         }
-        
         pageControl.snp.makeConstraints {
             $0.centerX.equalTo(self.imageScrollView.snp.centerX)
             $0.bottom.equalTo(self.imageScrollView.snp.bottom).offset(-12)
             $0.height.equalTo(50)
             $0.width.equalTo(100)
         }
-        
         pageControlLabel.snp.makeConstraints {
             $0.centerY.equalTo(self.pageControl.snp.centerY)
             $0.bottom.equalTo(self.imageScrollView.snp.bottom).offset(-12)
@@ -106,24 +102,17 @@ final class ImageOfItemCell: UITableViewCell, UIScrollViewDelegate {
     ) {
         self.imageUrls = []
         self.imagesOfProduct = []
-//        if !isBeingOnCycle {
             for i in urls {
                 
                 self.isBeingOnCycle = true
                 let url = URL(string: "https://\(i)")
                 guard let url = url else {return}
-                print("23 .url \(url) isBeingOnCycle \(isBeingOnCycle)")
-                
                 self.imageUrls.append(url)
-                
                 let image = UIImageView()
                 image.sd_setImage(with: url)
                 self.imagesOfProduct.append(image)
             }
-//        }
         setupToImage(imagesOfProduct: views, urls: imageUrls)
-
-        print("21 .self.imagesOfProduct: \(self.imagesOfProduct) self.views: \(self.views) imageUrls: \(self.imageUrls)")
     }
     
     func setupToImage(imagesOfProduct: [UIImageView], urls: [URL]) {
@@ -135,5 +124,11 @@ final class ImageOfItemCell: UITableViewCell, UIScrollViewDelegate {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageIndex = round(scrollView.contentOffset.x / contentView.frame.width)
+        pageControl.currentPage = Int(pageIndex)
+        pageControlLabel.update(totalValue: String(views.count - 1), currentValue: String(Int(pageIndex + 1)))
     }
 }

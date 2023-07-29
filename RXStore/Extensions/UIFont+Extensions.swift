@@ -135,7 +135,6 @@ extension UIFont {
         return UIFont(name: "SFCompact-Medium", size: 16) ?? .systemFont(ofSize: 16, weight: .medium)
     }
     
-    
     static var systemFont15Bold: UIFont {
         return UIFont(name: "SFCompact-Medium", size: 20) ?? .systemFont(ofSize: 15, weight: .bold)
     }

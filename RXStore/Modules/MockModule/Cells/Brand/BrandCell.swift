@@ -96,7 +96,6 @@ final class BrandCell: UITableViewCell {
             $0.top.equalTo(self.brandLabel.snp.bottom)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
-//            $0.height.equalTo(30)
         }
         rightChevron.snp.makeConstraints {
             $0.left.equalTo((self.brandLabel.snp.right)).offset(10)
@@ -142,13 +141,6 @@ final class BrandCell: UITableViewCell {
             $0.bottom.equalTo(self.contentView.snp.bottom)
         }
     }
-    
-//    brandLabel
-//    descriptionLabel
-//    rateLabel
-//    ratesLabel
-//    articleLabel
-//    numberOfSalesLabel
     func setup(
         brandLabel: String,
         descriptionLabel: String,

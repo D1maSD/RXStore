@@ -37,7 +37,6 @@ class CustomNavigationBarView: UIView {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-//        label.font = FontFamily.Montserrat.bold.font(size: 15)
         label.font = .systemFont15Bold
         label.textColor = .black
         return label

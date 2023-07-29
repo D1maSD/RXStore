@@ -8,16 +8,6 @@
 import UIKit
 
 
-//protocol Reusable: AnyObject {
-//    static var identifier: String { get }
-//}
-//
-//extension Reusable {
-//    static var identifier: String {
-//        return String(describing: self)
-//    }
-//}
-
 extension UITableView {
   func dequeueReusableCell<T: UITableViewCell>(for indexPath: IndexPath) -> T {
     guard let cell = self.dequeueReusableCell(withIdentifier: "\(T.self)", for: indexPath) as? T

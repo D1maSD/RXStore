@@ -27,7 +27,6 @@ final class MockCoordinator: Coordinator {
     private func showFilterScreen(filters: Filters) {
         let viewModel = FilterViewModel(filters: filters)
         bindFilterViewModel(viewModel: viewModel)
-//        let listManager = FilterListManager(city: filters.city, country: filters.country, dateFrom: filters.dateFrom, dateBefore: filters.dateBefore)
         let controller = FilterViewController(viewModel: viewModel)
         filterViewController = controller
         navigationController?.customNavigationIsHiden = false
@@ -38,20 +37,9 @@ final class MockCoordinator: Coordinator {
         viewModel.routes = { [weak self] routes in
             switch routes {
             case .dismiss:
-//                self?.peopleGoViewController?.moovedFromAnotherTab = false
                 self?.navigationController?.popToViewController(animated: true)
                 self?.navigationController?.customNavigationIsHiden = true
-            case .applyFilters(let filterModel):
-                print("bindFilterViewModel MockCoordinator")
-//                self?.mockViewController?.moovedFromAnotherTab = false
-                self?.mockViewController?.saveNewFilters(filters: filterModel)
-                self?.navigationController?.popToViewController(animated: true)
-                self?.navigationController?.customNavigationIsHiden = true
-            case .chooseCountry: break
-//                self?.showChooseCountry()
             case .applyFiltersArray(let filterModel):
-                print("27 .filterModel \(filterModel)")
-//                self?.mockViewController?.moovedFromAnotherTab = false
                 self?.mockViewController?.saveNewFiltersArray(filters: filterModel)
                 self?.navigationController?.popToViewController(animated: true)
                 self?.navigationController?.customNavigationIsHiden = true
@@ -65,10 +53,6 @@ final class MockCoordinator: Coordinator {
             switch routes {
             case .showFilterScreen(filters: let filters):
                 self?.showFilterScreen(filters: filters)
-//            case .showEvent(eventId: let eventId, categoryId: let categoryId):
-//                self?.showEvent(eventId: eventId, categoryId: categoryId)
-//            case .showProfile(let userId):
-//                self?.showProfile(userId: userId)
             }
         }
     }

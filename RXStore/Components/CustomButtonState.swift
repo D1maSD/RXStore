@@ -146,7 +146,6 @@ final class CustomRoundedButton: UIButton {
     }
 
     func updateState(isActive: Bool) {
-        print("50 .updateState isActive \(isActive))")
         self.isActive = isActive
         isEnabled = true
         switch type {

@@ -791,6 +791,7 @@ PODS:
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
   - PromisesObjC (2.2.0)
+  - RxSwift (5.1.3)
   - SDWebImage (5.17.0):
     - SDWebImage/Core (= 5.17.0)
   - SDWebImage/Core (5.17.0)
@@ -800,6 +801,7 @@ DEPENDENCIES:
   - FirebaseAnalytics
   - FirebaseAuth
   - FirebaseFirestore
+  - RxSwift (= 5.1.3)
   - SDWebImage
   - SnapKit (~> 5.6.0)
 
@@ -822,6 +824,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - RxSwift
     - SDWebImage
     - SnapKit
 
@@ -843,9 +846,10 @@ SPEC CHECKSUMS:
   leveldb-library: f03246171cce0484482ec291f88b6d563699ee06
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
+  RxSwift: 915abbdfb62214aa89ccd0b194d44fb478019b27
   SDWebImage: 750adf017a315a280c60fde706ab1e552a3ae4e9
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
-PODFILE CHECKSUM: 7fd42f2c8c205a22c1ef887f862ce42d6de1d96a
+PODFILE CHECKSUM: 04a612e34d30cd58fa1f3bc4718f7c66d08275f4
 
 COCOAPODS: 1.12.0

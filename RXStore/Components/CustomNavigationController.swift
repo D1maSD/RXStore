@@ -35,7 +35,6 @@ class CustomNavigationController: UINavigationController {
     private var navigationType: NavigationType = .white
     internal var customNavigationIsHiden: Bool = true {
         didSet {
-            print("21 .\(customNavigationIsHiden)")
             customNavigationNeeded(customNavigationIsHiden)
         }
     }

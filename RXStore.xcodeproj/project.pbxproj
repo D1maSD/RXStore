@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4B400BBD0E545400AE8D192F /* Pods_RXStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03220296756D8A199F907C48 /* Pods_RXStore.framework */; };
-		A81414A22A72F0D700ECBB6D /* FilterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81414A12A72F0D700ECBB6D /* FilterCoordinator.swift */; };
 		A81414A42A72F0E900ECBB6D /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81414A32A72F0E900ECBB6D /* FilterViewController.swift */; };
 		A81414A62A72F0FB00ECBB6D /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81414A52A72F0FB00ECBB6D /* FilterViewModel.swift */; };
-		A81414A82A72F10A00ECBB6D /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81414A72A72F10A00ECBB6D /* FilterModel.swift */; };
 		A814462B2A6FDD7200F802D7 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A814462A2A6FDD7200F802D7 /* FirestoreManager.swift */; };
 		A865F37A2A6DC19700FBE317 /* TableViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A865F3792A6DC19700FBE317 /* TableViewFactory.swift */; };
 		A865F37D2A6DC3CE00FBE317 /* MockCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A865F37C2A6DC3CE00FBE317 /* MockCoordinator.swift */; };
@@ -69,10 +67,8 @@
 		A801A8BD2A73D9F300FD44A3 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		A801A8BE2A73D9F400FD44A3 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		A801A8BF2A73D9F400FD44A3 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
-		A81414A12A72F0D700ECBB6D /* FilterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCoordinator.swift; sourceTree = "<group>"; };
 		A81414A32A72F0E900ECBB6D /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		A81414A52A72F0FB00ECBB6D /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
-		A81414A72A72F10A00ECBB6D /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
 		A814462A2A6FDD7200F802D7 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		A865F3792A6DC19700FBE317 /* TableViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFactory.swift; sourceTree = "<group>"; };
 		A865F37C2A6DC3CE00FBE317 /* MockCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinator.swift; sourceTree = "<group>"; };
@@ -169,10 +165,8 @@
 		A81414A02A72F0A100ECBB6D /* FilterModule */ = {
 			isa = PBXGroup;
 			children = (
-				A81414A12A72F0D700ECBB6D /* FilterCoordinator.swift */,
 				A81414A32A72F0E900ECBB6D /* FilterViewController.swift */,
 				A81414A52A72F0FB00ECBB6D /* FilterViewModel.swift */,
-				A81414A72A72F10A00ECBB6D /* FilterModel.swift */,
 				A8B07EB52A73034200CEE335 /* Cells */,
 			);
 			path = FilterModule;
@@ -497,10 +491,8 @@
 				A8C1898D2A6A848E002149EE /* CustomNavigationBarView.swift in Sources */,
 				A8878A5E2A683CA9003E8433 /* PageControlView.swift in Sources */,
 				A8782AB52A6681D6006594C3 /* StoreViewController.swift in Sources */,
-				A81414A22A72F0D700ECBB6D /* FilterCoordinator.swift in Sources */,
 				A8C5257D2A6E90A5002BA2CA /* UITableView + Extensions.swift in Sources */,
 				A89E37782A6A787600D73318 /* CustomNavigationController.swift in Sources */,
-				A81414A82A72F10A00ECBB6D /* FilterModel.swift in Sources */,
 				A8AD54892A7351C0005F8DFF /* CustomButtonState.swift in Sources */,
 				A865F3832A6DC5DE00FBE317 /* MockViewModel.swift in Sources */,
 				A8878A5A2A68317A003E8433 /* CardButtons.swift in Sources */,

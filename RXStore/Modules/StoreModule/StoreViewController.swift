@@ -65,6 +65,7 @@ class StoreViewController: ViewController {
     private var viewModel: StoreViewModelProtocol
     private lazy var cardActionView = CardActionView(delegate: viewModel)
     private lazy var views = [view0, view1, view2]
+    
     private lazy var imageScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsHorizontalScrollIndicator = false

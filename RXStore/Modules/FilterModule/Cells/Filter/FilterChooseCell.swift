@@ -15,7 +15,7 @@ protocol FilterChooseCellDelegate: AnyObject {
 final class FilterChooseCell: UICollectionViewCell {
 
     weak var delegate: FilterChooseCellDelegate?
-    private var buttonType: FilterCheckedButtonType = .first
+    private var buttonType: FilterCheckedButtonType = .jeans
 
     private lazy var checkedButton = FilterCheckedButton(delegate: self)
 
@@ -53,7 +53,6 @@ final class FilterChooseCell: UICollectionViewCell {
 
 extension FilterChooseCell: FilterCheckedButtonDelegate {
     func checkedButtonTap(checked: Bool) {
-        print("26 .\(buttonType)")
         delegate?.filterButtonTap(type: buttonType, active: checkedButton.checked)
     }
 }

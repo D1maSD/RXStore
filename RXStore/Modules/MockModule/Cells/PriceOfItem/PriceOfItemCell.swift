@@ -18,7 +18,6 @@ final class PriceOfItemCell: UITableViewCell {
     }()
     private lazy var priceLabel: UILabel = {
         let priceLabel = UILabel()
-//        priceLabel.text = "4329 ₽"
         priceLabel.font = .systemFont20Bold
         return priceLabel
     }()
@@ -26,7 +25,6 @@ final class PriceOfItemCell: UITableViewCell {
     private var isBeingOnCycle = false
     private lazy var oldPriceLabel: UILabel = {
         let priceLabel = UILabel()
-//        priceLabel.text = "6499 ₽"
         priceLabel.textColor = .gray
         priceLabel.font = .systemFont16Medium
         return priceLabel
@@ -38,7 +36,6 @@ final class PriceOfItemCell: UITableViewCell {
         priceLabel.font = .systemFont16Medium
         return priceLabel
     }()
-
     private lazy var colorDescriptionLabel: UILabel = {
         let priceLabel = UILabel()
         priceLabel.text = "Зеленый, изумрудно зеленый"
@@ -110,40 +107,30 @@ final class PriceOfItemCell: UITableViewCell {
         contentView.addSubview(verticalView)
         contentView.addSubview(colorLabel)
         contentView.addSubview(colorDescriptionLabel)
-        
-        
-        
         contentView.addSubview(imageOfItem)
         contentView.addSubview(imageOfItem1)
         contentView.addSubview(imageOfItem2)
         contentView.addSubview(imageOfItem3)
         contentView.addSubview(imageOfItem4)
         contentView.addSubview(imageOfItem5)
-        
-        
-        
         contentView.addSubview(separatorlView)
 
-        
         priceLabel.snp.makeConstraints {
             $0.top.equalTo(self.contentView.snp.top).offset(20)
             $0.left.equalTo(self.contentView.snp.left).offset(20)
             $0.height.equalTo(30)
         }
-        
         oldPriceLabel.snp.makeConstraints {
             $0.bottom.equalTo(self.priceLabel.snp.bottom)
             $0.left.equalTo(self.priceLabel.snp.right).offset(20)
             $0.height.equalTo(30)
         }
-        
         verticalView.snp.makeConstraints {
             $0.centerY.equalTo(self.oldPriceLabel.snp.centerY)
             $0.left.equalTo(self.oldPriceLabel.snp.left)
             $0.right.equalTo(self.oldPriceLabel.snp.right)
             $0.height.equalTo(1)
         }
-        
         colorLabel.snp.makeConstraints {
             $0.top.equalTo(self.priceLabel.snp.bottom).offset(5)
             $0.left.equalTo(self.contentView.snp.left).offset(20)
@@ -154,10 +141,6 @@ final class PriceOfItemCell: UITableViewCell {
             $0.left.equalTo(self.colorLabel.snp.right).offset(20)
             $0.height.equalTo(30)
         }
-        
-        
-        
-        
         imageOfItem.snp.makeConstraints {
             $0.top.equalTo(self.colorLabel.snp.bottom).offset(20)
             $0.left.equalTo(self.contentView.snp.left).offset(15)
@@ -194,11 +177,6 @@ final class PriceOfItemCell: UITableViewCell {
             $0.height.equalTo(70)
             $0.width.equalTo(50)
         }
-        
-        
-        
-        
-        
         separatorlView.snp.makeConstraints {
             $0.centerX.equalTo(self.contentView.snp.centerX)
             $0.left.equalTo(self.contentView.snp.left).offset(20)
@@ -220,22 +198,16 @@ final class PriceOfItemCell: UITableViewCell {
         self.oldPriceLabel.text = "\(oldPriceLabel) ₽"
         self.colorLabel.text = "Цвет: "
         self.colorDescriptionLabel.text = colorDescriptionLabel
-//        self.imageUrls = url
-        if !isBeingOnCycle {
+        self.imageUrls = []
             for i in url {
                 
                 self.isBeingOnCycle = true
                 let url = URL(string: "https://\(i)")
                 guard let url = url else {return}
-                print("21 .url \(url)")
                 self.imageUrls.append(url)
-                
                 let image = UIImageView()
                 image.sd_setImage(with: url)
-//                self.imagesOfProduct.append(image)
             }
-        }
-        
         setupToImage(imagesOfProduct: views, urls: imageUrls)
     }
     
