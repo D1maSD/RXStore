@@ -52,7 +52,6 @@ class MockViewController: ViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
-        cardActionView.startLoadingAnimation()
         loadData()
     }
     
@@ -74,7 +73,7 @@ extension MockViewController: UIScrollViewDelegate {
     private func setupCardActionView() {
         view.addSubview(cardActionView)
         cardActionView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(30)
+            make.top.equalToSuperview().offset(40)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(50)
         }

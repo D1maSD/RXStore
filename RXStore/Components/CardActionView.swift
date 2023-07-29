@@ -16,7 +16,6 @@ final class CardActionView: UIView {
 
     private weak var delegate: CardActionViewDelegate?
 
-    private let reloadButton = ReloadButton()
     private let filterButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "filterBlack"), for: .normal)
@@ -26,7 +25,7 @@ final class CardActionView: UIView {
     init(delegate: CardActionViewDelegate) {
         self.delegate = delegate
         super.init(frame: .zero)
-        self.backgroundColor = .green
+        self.backgroundColor = .lightGray
         setupUI()
         configure()
     }
@@ -36,30 +35,12 @@ final class CardActionView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func startLoadingAnimation() {
-        reloadButton.startLoadingAnimation()
-    }
-
-    func stopLoadingAnimation() {
-        reloadButton.stopLoadingAnimation()
-    }
-
     private func configure() {
         filterButton.addTarget(self, action: #selector(filterButtonTap), for: .touchUpInside)
     }
 
     private func setupUI() {
-        setupReloadButton()
         setupFilterButton()
-    }
-
-    private func setupReloadButton() {
-        addSubview(reloadButton)
-        reloadButton.snp.makeConstraints { make in
-            make.size.equalTo(50)
-            make.leading.equalToSuperview()
-            make.top.equalToSuperview()
-        }
     }
 
     private func setupFilterButton() {
@@ -69,10 +50,6 @@ final class CardActionView: UIView {
             make.trailing.equalToSuperview()
             make.top.equalToSuperview()
         }
-    }
-
-    @objc private func reloadButtonTap() {
-        delegate?.reloadButtonTap()
     }
 
     @objc private func filterButtonTap() {
