@@ -38,7 +38,6 @@ final class PriceOfItemCell: UITableViewCell {
     }()
     private lazy var colorDescriptionLabel: UILabel = {
         let priceLabel = UILabel()
-        priceLabel.text = "Зеленый, изумрудно зеленый"
         priceLabel.textColor = .black
         priceLabel.numberOfLines = 2
         priceLabel.font = .systemFont16Medium
