@@ -8,7 +8,7 @@
 import FirebaseFirestore
 
 
-class FirestoreManager {
+final class FirestoreManager {
     
     let db = Firestore.firestore()
 }

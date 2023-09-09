@@ -10,7 +10,7 @@ import SDWebImage
 import RxSwift
 
 
-class MockViewController: ViewController {
+final class MockViewController: ViewController {
     
     
     private let scrollView: UIScrollView = {

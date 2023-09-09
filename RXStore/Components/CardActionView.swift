@@ -22,6 +22,14 @@ final class CardActionView: UIView {
         return button
     }()
 
+    private let rxStoreLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont20Bold
+        label.text = "RXStore"
+        label.textAlignment = .center
+        return label
+    }()
+
     init(delegate: CardActionViewDelegate) {
         self.delegate = delegate
         super.init(frame: .zero)
@@ -49,6 +57,14 @@ final class CardActionView: UIView {
             make.size.equalTo(50)
             make.trailing.equalToSuperview()
             make.top.equalToSuperview()
+        }
+
+        addSubview(rxStoreLabel)
+        rxStoreLabel.snp.makeConstraints { make in
+            make.width.equalTo(150)
+            make.height.equalTo(50)
+            make.centerX.equalTo(self.snp.centerX)
+            make.centerY.equalTo(self.snp.centerY)
         }
     }
 

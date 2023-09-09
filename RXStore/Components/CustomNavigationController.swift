@@ -30,7 +30,7 @@ enum NavigationType {
     }
 }
 
-class CustomNavigationController: UINavigationController {
+final class CustomNavigationController: UINavigationController {
     internal lazy var customNavigationBar = CustomNavigationBarView(self)
     private var navigationType: NavigationType = .white
     internal var customNavigationIsHiden: Bool = true {
