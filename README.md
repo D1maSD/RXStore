@@ -4,3 +4,7 @@ Test task from company where i work to improve my skills before i go on new proj
 - Select color of clothes.
 - Filter available. You can choose the type of clothes you want to buy.
 - Data and metrics about clothes takes from remote firebase server.
+
+# Short demo to show app
+https://github.com/D1maSD/RXStore/assets/93784266/d57f9a14-fb91-42bc-8912-eadd2a7b0cd1
+
